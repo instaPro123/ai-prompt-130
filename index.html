@@ -1,0 +1,3378 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="only light">
+<meta name="robots" content="noindex, nofollow">
+<title>AIプロンプト大全130選</title>
+<style>
+:root { color-scheme: only light; --bg:#ffffff; --panel:#ffffff; --soft:#f6f7fd; --line:#e4e8f5;
+  --text:#1c2340; --sub:#5a6478; --blue:#4348e3; --purple:#9333e6; --cyan:#28b8e8;
+  --green:#0eaf7b; --grad:linear-gradient(90deg,#4348e3,#9333e6); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text);
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  line-height:1.7; }
+.hero { text-align:center; padding:52px 20px 36px;
+  background: radial-gradient(ellipse 70% 65% at 50% 0%, rgba(67,72,227,.08), transparent),
+              radial-gradient(ellipse 40% 45% at 82% 8%, rgba(147,51,230,.07), transparent),
+              radial-gradient(ellipse 35% 40% at 15% 12%, rgba(40,184,232,.07), transparent); }
+.badge { display:inline-block; font-size:12px; letter-spacing:.16em; font-weight:700;
+  color:var(--blue); border:1px solid #c9cef5; background:#f0f2fe;
+  border-radius:999px; padding:4px 16px; margin-bottom:16px; }
+h1 { font-size:clamp(24px,5vw,38px); font-weight:800; line-height:1.45;
+  background:var(--grad); -webkit-background-clip:text;
+  background-clip:text; -webkit-text-fill-color:transparent; }
+.hero p.sub { color:var(--sub); margin-top:12px; font-size:15px; }
+.howto { max-width:880px; margin:0 auto; padding:0 20px 8px; }
+.howto .box { background:var(--soft); border:1px solid var(--line); border-radius:14px;
+  padding:20px 24px; font-size:14px; color:var(--sub); }
+.howto .box strong { color:var(--text); }
+.howto .steps { list-style:none; margin-top:10px; }
+.howto .steps li { display:flex; gap:10px; align-items:flex-start; margin-top:8px; }
+.howto .steps .n { flex-shrink:0; width:22px; height:22px; border-radius:50%;
+  background:var(--grad); color:#fff; font-size:12px; font-weight:700;
+  display:grid; place-items:center; margin-top:3px; }
+.howto .tip { margin-top:14px; padding-top:12px; border-top:1px dashed var(--line); }
+.searchbar { max-width:880px; margin:22px auto 0; padding:0 20px; }
+.searchbar .wrap { position:relative; }
+.searchbar input { width:100%; font-size:15px; padding:13px 46px 13px 44px;
+  border:1px solid var(--line); border-radius:999px; background:#fff; color:var(--text);
+  font-family:inherit; outline:none; }
+.searchbar input:focus { border-color:#b9c0f0; box-shadow:0 0 0 4px rgba(67,72,227,.08); }
+.searchbar .ico { position:absolute; left:17px; top:50%; transform:translateY(-50%);
+  color:var(--sub); font-size:15px; }
+.searchbar .clear { position:absolute; right:8px; top:50%; transform:translateY(-50%);
+  border:none; background:transparent; color:var(--sub); font-size:18px; cursor:pointer;
+  padding:6px 10px; display:none; }
+.tabs { position:sticky; top:0; z-index:10; background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+  display:flex; gap:8px; overflow-x:auto; padding:14px 20px; margin-top:18px;
+  -webkit-overflow-scrolling:touch; }
+.tabs::-webkit-scrollbar { height:0; }
+.tab { flex-shrink:0; background:#fff; color:var(--sub); border:1px solid var(--line);
+  border-radius:999px; padding:7px 14px; font-size:13px; cursor:pointer;
+  font-family:inherit; display:flex; align-items:center; gap:6px; }
+.tab .c { font-size:11px; opacity:.7; }
+.tab.active { background:var(--grad); color:#fff; border-color:transparent; font-weight:700; }
+.tab.active .c { opacity:.85; }
+.hits { max-width:880px; margin:16px auto -6px; padding:0 20px; font-size:13px; color:var(--sub); }
+.grid { max-width:880px; margin:0 auto; padding:22px 20px 60px;
+  display:flex; flex-direction:column; gap:16px; }
+.sec { font-size:15px; font-weight:800; color:var(--text); margin-top:18px;
+  display:flex; align-items:center; gap:10px; }
+.sec:first-child { margin-top:0; }
+.sec span { position:relative; padding-left:12px; }
+.sec span::before { content:""; position:absolute; left:0; top:50%; transform:translateY(-50%);
+  width:4px; height:16px; border-radius:2px; background:var(--grad); }
+.sec em { font-style:normal; font-size:11px; font-weight:600; color:var(--sub);
+  border:1px solid var(--line); border-radius:999px; padding:1px 9px; }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:16px;
+  padding:22px 24px; box-shadow:0 2px 10px rgba(28,35,64,.05); transition:border-color .2s, box-shadow .2s; }
+.card:hover { border-color:#b9c0f0; box-shadow:0 4px 18px rgba(67,72,227,.10); }
+.card-head { display:flex; gap:16px; align-items:flex-start; }
+.num { flex-shrink:0; width:46px; height:46px; border-radius:12px; display:grid; place-items:center;
+  font-weight:800; font-size:15px; color:#fff; letter-spacing:.02em;
+  background:linear-gradient(135deg,var(--blue),var(--purple)); }
+h3 { font-size:17px; font-weight:700; }
+.tag { display:inline-block; vertical-align:middle; margin-left:8px; font-size:10px;
+  font-weight:700; color:var(--purple); border:1px solid #e0c9f5; background:#faf3fe;
+  border-radius:6px; padding:1px 7px; white-space:nowrap; }
+.when { font-size:13px; color:var(--sub); margin-top:6px; }
+.when-label { display:inline-block; font-size:11px; color:var(--green);
+  border:1px solid #b5e3d2; background:#effaf5; border-radius:6px; padding:0 6px; margin-right:8px; }
+details { margin-top:14px; }
+summary { cursor:pointer; font-size:13px; color:var(--blue); font-weight:700;
+  list-style:none; user-select:none; }
+summary::-webkit-details-marker { display:none; }
+summary::before { content:"▸ "; }
+details[open] summary::before { content:"▾ "; }
+.prompt-wrap { position:relative; margin-top:12px; }
+pre { background:var(--soft); border:1px solid var(--line); border-radius:12px;
+  padding:44px 18px 18px; font-size:13px; line-height:1.75; white-space:pre-wrap;
+  word-break:break-word; color:#2a3355;
+  font-family:"SF Mono",Menlo,Consolas,"Hiragino Kaku Gothic ProN",monospace; }
+.copy { position:absolute; top:10px; right:10px; background:#fff; color:var(--blue);
+  border:1px solid #c9cef5; border-radius:8px; padding:6px 14px; font-size:12px;
+  cursor:pointer; font-weight:700; font-family:inherit; }
+.copy:hover { border-color:var(--blue); background:#f0f2fe; }
+.copy.done { background:var(--green); color:#fff; border-color:var(--green); }
+.empty { text-align:center; color:var(--sub); font-size:14px; padding:40px 0; display:none; }
+.totop { position:fixed; right:18px; bottom:18px; z-index:20; width:44px; height:44px;
+  border-radius:50%; border:1px solid var(--line); background:#fff; color:var(--blue);
+  font-size:16px; cursor:pointer; box-shadow:0 4px 14px rgba(28,35,64,.12);
+  display:none; place-items:center; }
+.footer { text-align:center; color:var(--sub); font-size:12px; padding:30px 20px 50px;
+  border-top:1px solid var(--line); }
+.footer .note { margin-top:8px; }
+@media (max-width:600px) {
+  .card { padding:18px 16px; }
+  .card-head { gap:12px; }
+  .num { width:40px; height:40px; font-size:13px; }
+  h3 { font-size:16px; }
+  pre { font-size:12.5px; padding:44px 14px 14px; }
+}
+</style></head><body>
+<header class="hero">
+<div class="badge">AI PROMPT LIBRARY</div>
+<h1>ムダな作業10倍効率化できる<br>AIプロンプト大全130選</h1>
+<p class="sub">「作業を頼む」から「仕事を任せる」へ<br>【 】を書き換えてコピペするだけ</p>
+</header>
+<section class="howto"><div class="box">
+<strong>使い方</strong>
+<ul class="steps">
+<li><span class="n">1</span><span>検索窓か分野タブから、やりたいことに近いプロンプトを探す</span></li>
+<li><span class="n">2</span><span>「プロンプトを見る」を開いて、コピーする</span></li>
+<li><span class="n">3</span><span>【 】の中だけ自分の内容に書き換えて、AIに送信する</span></li>
+</ul>
+<p class="tip">コツ：AIから質問が来たら<strong>全部答える</strong>と仕上がりが良くなります。<br>
+Claude / ChatGPT / Gemini どれでも使えます。<span class="tag">ファイル操作AI向け</span>のマークが付いたものは、
+パソコンのファイルを直接さわれるAI（Claude Codeなど）向けです。<br>
+<span style="opacity:.75">※番号は「30選」と共通の通し番号です。分野ごとにまとめているため、番号は飛びます。</span></p>
+</div></section>
+<section class="searchbar"><div class="wrap">
+<span class="ico">🔍</span>
+<input type="search" id="q" placeholder="やりたいことで検索（例：議事録、サムネ、値段、断り方）" autocomplete="off">
+<button class="clear" id="clear" type="button" aria-label="消す">×</button>
+</div></section>
+<nav class="tabs"><button class="tab active" data-cat="all">すべて<span class="c">130</span></button><button class="tab" data-cat="SNS発信・投稿">SNS発信・投稿<span class="c">19</span></button><button class="tab" data-cat="コンテンツ・商品づくり">コンテンツ・商品づくり<span class="c">16</span></button><button class="tab" data-cat="集客・販売・セールス">集客・販売・セールス<span class="c">10</span></button><button class="tab" data-cat="リサーチ・分析">リサーチ・分析<span class="c">15</span></button><button class="tab" data-cat="意思決定・戦略">意思決定・戦略<span class="c">10</span></button><button class="tab" data-cat="検品・品質チェック">検品・品質チェック<span class="c">10</span></button><button class="tab" data-cat="仕組み化・自動化">仕組み化・自動化<span class="c">17</span></button><button class="tab" data-cat="数字・経理・事務">数字・経理・事務<span class="c">8</span></button><button class="tab" data-cat="顧客対応・コミュニケーション">顧客対応・コミュニケーション<span class="c">10</span></button><button class="tab" data-cat="ナレッジ・AIを育てる">ナレッジ・AIを育てる<span class="c">6</span></button><button class="tab" data-cat="画像・デザイン・動画">画像・デザイン・動画<span class="c">9</span></button></nav>
+<p class="hits" id="hits"></p>
+<main class="grid" id="grid">
+<h2 class="sec" data-cat="SNS発信・投稿"><span>SNS発信・投稿</span><em>19本</em></h2>
+<article class="card" data-cat="SNS発信・投稿" data-no="1">
+<div class="card-head"><span class="num">001</span><div><h3>投稿ネタの引き出しインタビュー</h3>
+<p class="when"><span class="when-label">こんな時に</span>ネタ切れ。「今日何を投稿しよう」で30分固まる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、SNS発信者の強みを引き出すインタビュアーです。
+私の経験の中から「私にしか出せない投稿ネタ」を見つけてください。
+
+進め方：
+・質問は1回につき1つだけ。合計8問を目安にしてください
+・「本人は普通だと思っているけど、読者には価値がある話」を優先して掘ってください
+・8問終わったら、聞き出した内容をもとに投稿ネタを15個、仮タイトルつきで一覧にしてください
+・各ネタに「共感型／ノウハウ型／失敗談型」のどれで書くと良いかも添えてください
+
+私の発信ジャンル：【例：フリーランス×AI活用】
+それでは、1問目をお願いします。</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="2">
+<div class="card-head"><span class="num">002</span><div><h3>反応が良かった投稿の「勝ちパターン」分析</h3>
+<p class="when"><span class="when-label">こんな時に</span>伸びた理由・伸びない理由を感覚でしか語れない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、SNSの投稿分析の専門家です。
+下に貼る「伸びた投稿」と「伸びなかった投稿」を比べて、私の勝ちパターンを言語化してください。
+
+出力してほしいもの：
+1. 伸びた投稿に共通する要素（書き出し・構成・テーマ・長さ）
+2. 伸びなかった投稿に共通する要素
+3. 次の投稿から使える「私専用チェックリスト」5項目
+
+守ってほしいこと：
+・データから言えないことは「推測」と書き分けてください
+・お世辞は不要です。率直に指摘してください
+
+【伸びた投稿3本と数字、伸びなかった投稿3本と数字を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="3">
+<div class="card-head"><span class="num">003</span><div><h3>1つのネタから投稿5案（書き出し全部変え）</h3>
+<p class="when"><span class="when-label">こんな時に</span>ネタはあるのに文章が1パターンしか浮かばない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、SNS投稿の専門ライターです。
+次のネタで投稿案を5つ作ってください。
+
+条件：
+・書き出しの1行目は5案すべて違う切り口にすること
+　（数字で驚かせる／問いかける／失敗を告白する／常識を否定する／ビフォーアフター）
+・各案の下に「この案の狙い」を1行で添えること
+・私の過去投稿の口調に合わせること
+
+ネタ：【投稿したい内容を雑にでOK】
+過去投稿：【2〜3本貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="4">
+<div class="card-head"><span class="num">004</span><div><h3>自分の「文体設計書」を作る</h3>
+<p class="when"><span class="when-label">こんな時に</span>AIの文章が毎回「他人っぽく」て手直しが減らない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、文章の癖を分析する専門家です。
+下に貼る私の過去投稿から「私の文体設計書」を1枚作ってください。
+
+分析する観点：
+・語尾の癖（〜です／〜だよね／体言止めの頻度）
+・一人称と読者への呼びかけ方
+・よく使う言い回し・絶対に使っていない表現
+・1文の長さ、改行のリズム、絵文字の使い方
+
+完成条件：
+この設計書を初対面のAIに渡したら、私の文章と見分けがつかないものが書ける状態。
+今後この設計書は、文章を頼むとき毎回最初に貼って使います。その前提で書いてください。
+
+【過去投稿を10本以上貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="5">
+<div class="card-head"><span class="num">005</span><div><h3>投稿前のセルフ検品</h3>
+<p class="when"><span class="when-label">こんな時に</span>投稿した後に誤字や言い過ぎに気づく</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、公開前の原稿をチェックする校閲担当です。
+下の投稿を、公開して問題ないか検品してください。
+
+チェック項目：
+・誤字脱字、日付や数字の間違い
+・言い切りすぎて根拠が足りない箇所
+・読者を傷つけたり、誤解を招いたりする可能性がある表現
+・1行目で手が止まるか（弱ければ改善案を3つ）
+
+出力：
+問題箇所を「重大／気になる／好みの問題」の3段階に分けて、修正案とセットで出してください。
+問題がなければ「なし」と言い切ってください。無理に指摘を作らないでください。
+
+【投稿を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="6">
+<div class="card-head"><span class="num">006</span><div><h3>1本のコンテンツを別媒体に展開する</h3>
+<p class="when"><span class="when-label">こんな時に</span>毎媒体ゼロから作っていて時間が足りない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、複数のSNSを運用する編集者です。
+下のコンテンツを、次の媒体向けに作り直してください。
+
+作るもの：
+1. X投稿（140字前後）×2本
+2. Threads投稿（会話調・共感重視）×2本
+3. Instagramストーリーズ構成（4枚・各枚の文言つき）
+
+守ってほしいこと：
+・単純な切り貼りではなく、各媒体の読まれ方に合わせて書き直すこと
+・元のコンテンツにない情報・数字を足さないこと
+
+元コンテンツ：【貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="7">
+<div class="card-head"><span class="num">007</span><div><h3>プロフィール文の改善3案</h3>
+<p class="when"><span class="when-label">こんな時に</span>フォロワーが増えない原因がプロフにある気がする</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、SNSアカウント設計のコンサルタントです。
+私のプロフィールを診断して、改善案を3つ出してください。
+
+診断の観点：
+・3秒で「誰向けの何のアカウントか」が伝わるか
+・フォローする理由（毎日見たくなる理由）が書かれているか
+・実績や数字は入っているか、入れすぎていないか
+
+出力：
+1. 現状の診断（率直に。点数もつけてください）
+2. 改善案3パターン（それぞれ狙いが違うもの）
+3. 一番のおすすめとその理由
+
+現在のプロフィール：【貼る】
+アカウントの方向性：【誰に何を届けたいか】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="31">
+<div class="card-head"><span class="num">031</span><div><h3>読者の1日をたどって投稿ネタ20個</h3>
+<p class="when"><span class="when-label">こんな時に</span>ネタは出るのに、読者に刺さっている気がしない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、読者の暮らしを細かく思い描く調査担当です。
+私の読者の1日をたどって、そこから投稿ネタを20個出してください。
+
+進め方：
+・まず私の読者の平日を、朝起きてから寝るまで時間の流れで書き出してください
+・その1日の中で、私のジャンルの悩みが顔を出す瞬間を全部拾ってください
+・拾った瞬間ごとに、その人が心の中でつぶやきそうな言葉を1つ添えてください
+
+出力：
+1. 1日の流れ（時間帯と、その時の状況）
+2. 悩みが顔を出した瞬間の一覧
+3. 投稿ネタ20個の表。列は「仮タイトル／元になった瞬間／どんな気持ちに応えるか」
+
+守ってほしいこと：
+・「忙しい」「不安」のような大きな言葉で片づけず、その場面を書いてください
+・私が話していないことを、読者の設定として勝手に決めないでください
+
+私の読者：【例：30代・小学生の子がいる会社員女性】
+私の発信ジャンル：【例：AIを使った時短術】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="32">
+<div class="card-head"><span class="num">032</span><div><h3>ニュースを自分ごとに変える1本</h3>
+<p class="when"><span class="when-label">こんな時に</span>話題のニュースを、自分の発信にどう繋げばいいか分からない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、世の中の話題を読者の生活の言葉に置きかえる編集者です。
+下のニュースを、私のフォロワーが「これは自分の話だ」と感じる投稿1本にしてください。
+
+進め方：
+・まず内容を、その分野を知らない人にも分かる短い要約にしてください
+・私の読者にとって、明日から何がどう変わるのかを3つ書き出してください
+・その3つの中から、いちばん自分ごとになる切り口を1つ選び、選んだ理由を1行添えてください
+
+出力：
+そのまま出せる投稿の下書き1本。書き出しの1行だけは3案出してください。
+
+守ってほしいこと：
+・日付・数字・会社名を確認し、「もう決まったこと」と「まだ決まっていないこと」を分けてください
+・裏が取れなかった部分は「未検証」と書き、下書きの本文には入れないでください
+・不安をあおって注目を集める書き方はしないでください
+
+【ニュースの本文かリンクを貼る】
+私の発信ジャンル：【例：個人事業の経理】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="33">
+<div class="card-head"><span class="num">033</span><div><h3>伸びた投稿10本から型を抜く</h3>
+<p class="when"><span class="when-label">こんな時に</span>うまい人の投稿を見ても、何が違うのか言葉にできない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、文章の組み立てを分解する分析担当です。
+下に貼る、同じ分野で伸びている投稿10本から、共通する型を抜き出してください。
+
+分析する観点：
+・1行目の入り方（何で手を止めさせているか）
+・話の展開の順番（どこで具体例が来て、どこで結論が来るか）
+・締めの形と、読者に促している行動
+・1本あたりの長さ、改行のリズム
+
+出力：
+1. 10本に共通していた型（多い順に3つまで）
+2. その型を私が使える形にした投稿テンプレート3つ。骨組みだけを【 】の穴埋めにしてください
+3. 各テンプレートに「どんなネタの時に合うか」を1行
+
+守ってほしいこと：
+・言い回しやたとえ話をそのまま真似する案は出さないでください。借りるのは組み立てだけです
+・10本に当てはまらない一般論は書かないでください。根拠は貼った投稿の中から示してください
+
+【伸びている投稿を10本貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="34">
+<div class="card-head"><span class="num">034</span><div><h3>1行目だけを10パターン作る</h3>
+<p class="when"><span class="when-label">こんな時に</span>1行目が弱い気がして、投稿ボタンが押せない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、読み手の指を止める書き出しを作る担当です。
+下の投稿の1行目だけを、10パターン書き分けてください。
+
+条件：
+・本文は変えず、1行目だけを差し替える前提で作ってください
+・10本それぞれに、狙っている気持ちの名前を付けてください（好奇心／不安／共感／意外性／得したい など）
+・同じ気持ちを狙う案が3本以上並ばないようにしてください
+・短く言い切る案と、少し長い案を混ぜてください
+
+出力：
+1. 1行目の10案（各案に、狙う気持ちの名前と、なぜ手が止まるかを1行）
+2. いちばん強いと思う1案と、その理由
+3. 逆に、いちばん外していると思う1案と、その理由
+
+守ってほしいこと：
+・お世辞は不要です。全部良い、という評価はしないでください
+・本文に書いていないことを、1行目で約束しないでください
+
+【投稿の本文を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="35">
+<div class="card-head"><span class="num">035</span><div><h3>60秒動画の台本を方向違いで3本</h3>
+<p class="when"><span class="when-label">こんな時に</span>動画を撮ろうとして、カメラの前で何を話すか迷う</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、短い動画の構成を作る放送作家です。
+下のテーマで、60秒の動画台本を3パターン作ってください。
+
+条件：
+・3本は方向性を変えてください（役に立つ話／自分の失敗談／思い込みをひっくり返す話 など）
+・最初の2秒で指が止まる一言から始めてください
+・60秒に収まる分量にしてください。目安は1本あたり300〜350字です
+
+出力（3本それぞれ）：
+1. 冒頭2秒の一言
+2. 話す内容を秒数つきで（0-2秒／2-15秒 のように区切る）
+3. 画面に出す文字の案（1画面1つのことだけ。5〜7個）
+4. 撮り方のメモ（手元を映す／表情だけ など）
+5. 締めの一言
+
+守ってほしいこと：
+・情報を詰めこまないでください。1本で伝えることは1つに絞ってください
+・私が言っていない実績や数字を、台本に入れないでください
+
+テーマ：【例：AIで1週間分の献立を決める方法】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="36">
+<div class="card-head"><span class="num">036</span><div><h3>ストーリーズ6枚の流れを作る</h3>
+<p class="when"><span class="when-label">こんな時に</span>毎日のストーリーズが、報告と宣伝だけになっている</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、短い連続投稿の流れを設計する担当です。
+下のテーマで、6枚つづきのストーリーズの構成を作ってください。
+
+条件：
+・1枚目は、続きが見たくて指が止まる形にしてください
+・途中に1回だけ、読者が触って参加できる仕掛けを入れてください。質問箱・アンケート・目盛りで答えるものなど、どれを使うかは選んで理由を添えてください
+・最後は、返事が返ってきやすい終わり方にしてください
+
+出力：
+6枚それぞれを表にしてください。列は次の3つです。
+・画面に出す文言（3秒で読み切れる長さ）
+・見せ方の指示（写真か文字だけか、背景、文字を置く位置）
+・この1枚で読者をどんな気持ちにするか
+
+表の後に、6枚全体のどこが山場かを1行で説明してください。
+
+守ってほしいこと：
+・宣伝は6枚のうち1枚までにしてください
+・私が渡していない出来事を作らないでください
+
+テーマ：【例：昨日の失敗から学んだこと】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="37">
+<div class="card-head"><span class="num">037</span><div><h3>伸びなかった投稿の死因を診断</h3>
+<p class="when"><span class="when-label">こんな時に</span>反応がなかった投稿の原因が、感覚でしか分からない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、投稿の結果を数字から読み解く分析担当です。
+下の投稿がなぜ伸びなかったのか、死因を特定してください。
+
+分析する観点：
+・表示された回数に対して、反応がどこで落ちているか（そもそも見られていない／見られたが読まれていない／読まれたが動かれていない）
+・1行目で止まったのか、途中で離れたのか、締めが弱かったのか
+・出した時間帯や、直前の投稿との流れ
+
+出力：
+1. 死因の特定。いちばん効いていた原因を1つ、次点を2つ。それぞれ、数字のどこを見てそう言えるのかを添えてください
+2. 同じネタのまま直した改善版1本
+3. ネタは同じで、切り口を変えた別案2本
+
+守ってほしいこと：
+・数字から言えないことは「推測」と分けて書いてください
+・お世辞は不要です。書き手をかばわず、率直に指摘してください
+
+【投稿の本文と、表示回数・いいね・保存などの数字を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="38">
+<div class="card-head"><span class="num">038</span><div><h3>冒頭3行の入り方を5通り試す</h3>
+<p class="when"><span class="when-label">こんな時に</span>書きかけの記事、最初の3行で読み飛ばされそうで不安</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、長い文章の入り口を作り直す編集者です。
+下の書きかけの文章の、冒頭3行だけを5パターンに書き直してください。
+
+条件：
+・5パターンは、それぞれ違う入り方にしてください
+　1. いきなり結論から入ってください
+　2. 読者の心の声から入ってください
+　3. 自分が失敗した場面から入ってください
+　4. 常識をひっくり返す一言から入ってください
+　5. 数字や事実から入ってください
+・4行目以降の本文と自然につながる形にしてください。つながらない案は出さないでください
+
+出力：
+・5パターンの冒頭3行
+・各案に「この後どう続けると効くか」を1行
+・本文の内容から見て、いちばん相性が良い案とその理由
+
+守ってほしいこと：
+・本文にない体験や数字を、冒頭で作らないでください
+・きれいに整えすぎないでください。私の言葉のざらつきは残してください
+
+【書きかけの文章を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="39">
+<div class="card-head"><span class="num">039</span><div><h3>中学生でも分かる言葉に直す</h3>
+<p class="when"><span class="when-label">こんな時に</span>説明すると「難しい」と言われて、話がそこで終わる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、専門の話をやさしい言葉に置きかえる担当です。
+下の文章を、その分野を全く知らない人にも届く形に書き直してください。
+
+条件：
+・専門用語は使わないでください。どうしても必要なときは、その場で一言の説明を添えてください
+・たとえ話を2つ以上入れてください。台所・買い物・部活など、暮らしの中の話にしてください
+・読み終わったときに「そういうことか」と腑に落ちる順番に並べ替えてください
+・分かりやすさを優先するあまり、意味を変えたり間違った説明にしたりしないでください
+
+出力：
+1. 書き直した文章
+2. 言いかえの対応表（元の言葉 → 使った言葉）
+3. どうしても簡単にできなかった箇所と、その理由
+
+守ってほしいこと：
+・子ども扱いした言い方にはしないでください。相手は賢く、この分野を知らないだけです
+
+【文章を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="40">
+<div class="card-head"><span class="num">040</span><div><h3>30日分の投稿カレンダーを1枚に</h3>
+<p class="when"><span class="when-label">こんな時に</span>毎朝「今日は何を書こう」から始まって時間が溶ける</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、発信の予定を組み立てる編集長です。
+私の30日分の投稿カレンダーを、表1枚にまとめてください。
+
+条件：
+・投稿は週【例：5】回。30日分を日付順に並べてください
+・ネタの割合は「ノウハウ4：共感3：実績2：告知1」を守ってください
+・同じ型が3日続かないように散らしてください
+・告知の日の前には、その商品につながる話を置いてください
+
+出力：
+表にしてください。列は次の5つです。
+・日付
+・ネタの型（ノウハウ／共感／実績／告知）
+・仮タイトル
+・この日の狙い（1行）
+・使う素材（過去の投稿を作り直す／新しく書く の区別）
+
+表の後に、この30日で読者にどう思われたいかを3行でまとめてください。
+途中で私に確認せず、30日分を一度に出し切ってください。
+
+私の発信ジャンル：【例：ひとり美容室の集客】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="41">
+<div class="card-head"><span class="num">041</span><div><h3>5,000字の記事を一気に書き切らせる</h3>
+<p class="when"><span class="when-label">こんな時に</span>長い記事を書こうとすると、構成を練る途中で止まる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、読み応えのある記事を仕上げるライターです。
+下のテーマで、5,000字ほどの記事を書き上げてください。
+
+完成条件：
+・読み終えた人が「保存しておこう」と思う使いどころがあること
+・具体的な手順や数字が入っていて、一般論だけの段落がないこと
+・要点をまとめた表が1つ入っていること
+・見出しが「〇〇について」ではなく、続きを読みたくなる言葉になっていること
+
+進め方：
+・構成づくりから執筆まで、途中で私に確認せず最後まで進めてください
+・書き終えたら、冒頭の3行だけもう一度書き直してください
+・最後に、削っても意味が通る段落があれば教えてください
+
+守ってほしいこと：
+・数字や事実は調べて裏を取り、確認できなかったものは本文に「未検証」と書いてください
+・私が渡していない体験談や実績を作らないでください
+
+テーマ：【例：はじめての予約システム導入で失敗しない手順】
+読者：【例：スタッフ2人以下の小さなお店の経営者】</pre></div></details>
+</article>
+<article class="card" data-cat="SNS発信・投稿" data-no="42">
+<div class="card-head"><span class="num">042</span><div><h3>気づきをためるネタバンク<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>お客さんの一言に感動したのに、翌日には忘れている</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の発信ネタをためて整理する担当です。
+今日の気づきやお客さんの言葉を、ネタバンクに追記してください。
+
+進め方：
+・私が話した内容を、実際にあったことと、私の感想に分けて記録してください
+・1件ごとに、次の項目をつけて追記してください
+　1. 日付
+　2. 出来事（誰の、どんな場面か。個人が分かってしまう情報は伏せる）
+　3. 印象に残った一言（要約せず、そのままの言葉で）
+　4. ここから作れる発信のネタ（仮タイトル2案）
+　5. 合いそうな型（共感／ノウハウ／失敗談／実績）
+　6. 使い時（すぐ／告知の前／余裕があれば）
+・すでに似た記録があれば、上書きせず「関連あり」として紐づけてください
+
+出力：
+追記した内容と、溜まっているネタのうち「そろそろ書いたほうがいい3件」を挙げてください。
+
+私が話していない内容を、補って書かないでください。
+書き込みや上書きなど取り消せない操作は、実行前に必ず確認してください。
+
+【今日の気づき・お客さんの一言を書く】</pre></div></details>
+</article>
+<h2 class="sec" data-cat="コンテンツ・商品づくり"><span>コンテンツ・商品づくり</span><em>16本</em></h2>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="8">
+<div class="card-head"><span class="num">008</span><div><h3>売れるテーマの「判断材料」を揃える</h3>
+<p class="when"><span class="when-label">こんな時に</span>noteや講座のテーマが決められない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、個人向けコンテンツ販売の企画担当です。
+私が「売るテーマ」を決めるための判断材料を揃えてください。決めるのは私です。
+
+進め方：
+1. 私の経験・実績・失敗談を引き出す質問を1問ずつ、7問してください
+2. 聞き出した素材と「読者が対価を払ってでも解決したい悩み」が重なるテーマ候補を7個出してください
+3. 各候補に「想定読者／お金を払う理由／私が勝てる根拠」を添えてください
+4. 「需要」「競合の少なさ」「私の経験の濃さ」の3軸で採点し、上位2つを推薦してください
+
+守ってほしいこと：
+・市場の数字を根拠なく作らないこと。確認できないものは「未確認」と書くこと
+・推薦を出したら止まってください。最終決定は私がします</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="9">
+<div class="card-head"><span class="num">009</span><div><h3>読者の解像度を上げる</h3>
+<p class="when"><span class="when-label">こんな時に</span>「30代女性向け」みたいなふわっとした読者像しか描けない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、読者理解の専門家です。
+テーマ【○○】に興味を持つ読者1人を、具体的な場面で描写してください。
+
+出力してほしいもの：
+1. その人の平日1日の流れと、悩みが顔を出す瞬間3つ
+2. 夜にスマホで検索しそうな言葉5個
+3. これまで試して挫折したこと2つ
+4. 「この人がこのコンテンツを選ぶ理由」を3行で
+
+守ってほしいこと：
+・「悩んでいる」「困っている」という言葉を使わず、場面と感情で書くこと
+・描写はすべて仮説です。「仮説」と明記してください</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="10">
+<div class="card-head"><span class="num">010</span><div><h3>目次と「見せる/売る」の線引き設計</h3>
+<p class="when"><span class="when-label">こんな時に</span>無料部分と有料部分の境目で迷う</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、有料コンテンツの構成を設計する編集者です。
+次のテーマで、読者が満足する構成を作ってください。
+
+テーマ：【○○】
+読者：【誰向けか】
+形式：【note／講座／PDF特典など】
+
+出力：
+1. タイトル案3つ（狙いつき）
+2. 目次（見出しごとに「読者をどういう状態にするか」を1行添える）
+3. 無料で見せる範囲と有料にする範囲の提案＋そう区切る理由
+4. 価格帯の提案と根拠
+
+守ってほしいこと：
+・区切る理由を必ず言葉にすること。理由が説明できない線引きは提案しないこと</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="11">
+<div class="card-head"><span class="num">011</span><div><h3>体験談を渡して本文を書かせる</h3>
+<p class="when"><span class="when-label">こんな時に</span>AIに書かせると内容が薄くなる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、コンテンツ制作のライターです。
+下の構成と、私の体験談メモをもとに本文を書いてください。
+
+一番大事なルール：
+・私の体験談を各見出しに割り振ってから書き始めること（最初に割り振り表を見せてください）
+・体験談が足りない見出しには、本文中に「◆ここに○○の体験談が欲しいです」とメモを残すこと
+・私が渡していない数字・実績・エピソードを作らないこと
+
+書き方：
+・スマホで読む前提。1文短く、改行多め
+・きれいにまとめすぎないこと。メモの言葉の生っぽさを残すこと
+
+構成：【貼る】
+体験談メモ：【箇条書きで雑に貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="12">
+<div class="card-head"><span class="num">012</span><div><h3>完成品の辛口レビュー（別チャット用）</h3>
+<p class="when"><span class="when-label">こんな時に</span>書き上げたものが良いのか悪いのか自分で判断できない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、有料コンテンツを購入者目線で審査するレビュアーです。
+下の原稿を、お金を払った読者になったつもりで厳しくレビューしてください。
+
+観点：
+・値段分の価値を感じるか。感じないならどこが足りないか
+・どこで読むのをやめたくなるか
+・「知ってた」と思われる部分はどこか
+・逆に、削ってはいけない一番価値のある部分はどこか
+
+出力：
+・総合点（100点満点）と、その理由
+・直すべき箇所を優先度順に
+・良い部分（ここは変えるなという箇所）
+
+褒めて終わらせないでください。私はお世辞ではなく改善点が欲しいです。
+
+【原稿を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="13">
+<div class="card-head"><span class="num">013</span><div><h3>完成コンテンツから告知投稿を作る</h3>
+<p class="when"><span class="when-label">こんな時に</span>作ったあとの「売る投稿」が苦手</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、コンテンツの告知を担当するマーケターです。
+完成したコンテンツをもとに、公開までの告知投稿を設計してください。
+
+作るもの：
+1. 告知投稿7本（1週間分）
+　・内容の一部を惜しみなく見せる投稿：3本
+　・制作の裏側や想いを見せる投稿：2本
+　・発売告知・リマインド投稿：2本
+2. 各投稿の投稿順とタイミングの提案
+
+守ってほしいこと：
+・7本全部で売り込まないこと。見せる投稿が信頼を作ります
+・有料部分の核心はネタバレしないこと
+
+コンテンツ：【概要か全文を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="43">
+<div class="card-head"><span class="num">043</span><div><h3>テーマ候補10個を採点して絞る</h3>
+<p class="when"><span class="when-label">こんな時に</span>作りたい気持ちはあるのに、何を売るかで3週間止まっている</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、有料コンテンツの企画を組み立てる商品企画の担当です。
+私がテーマを決められるように、私が挙げた候補を採点してください。決めるのは私です。
+
+進め方：
+1. 下に貼る私のテーマ候補を、買う人の目線で1つずつ読み直してください。候補が10個に満たなければ、私のメモから足りない分だけ補ってください
+2. 各候補に「どんな状況の人が買うか」「無料の情報では足りない理由」を1行ずつ添えてください
+3. 10個を次の4つの軸で10点満点で採点してください
+　・その悩みの深さ（今すぐ解決したいか）
+　・似た商品の少なさ
+　・私の実体験がどれだけ乗るか
+　・書き上げるまでの速さ
+4. 合計点の上位3つを比較表にしてください
+
+出力：
+候補10個の一覧 → 採点表 → 上位3つの比較表 → 最有力の1つと、その弱点。
+推薦と根拠まで出したら止まってください。私に代わって決めないでください。
+
+市場の数字らしきものを根拠なく作らないでください。確かめられないものは「未検証」と書いてください。
+
+【私が思いついているテーマ候補を、思いつくだけ貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="44">
+<div class="card-head"><span class="num">044</span><div><h3>買う理由を3行に絞り込む</h3>
+<p class="when"><span class="when-label">こんな時に</span>無料でも読める内容では、と考えて値段がつけられない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、売り出す前の読者調査を担当する専門家です。
+下のテーマの有料コンテンツを、読者がなぜ買うのかを言葉にしてください。
+
+進め方：
+1. その悩みを抱えた人が、これまで無料で調べて済ませてきたことを書き出してください（検索した言葉、見た動画、読んだ記事）
+2. それでも解決しなかった理由を、その人の目線で書いてください
+3. 「無料で我慢する」から「お金を払ってでも解決する」に切り替わる瞬間を、気持ちの動きとして3つ挙げてください
+4. その3つをもとに、「この人がこれを買う理由」を3行にまとめてください
+
+出力：
+3行の文と、1行ごとに「なぜこの言葉にしたか」の根拠。
+この3行は、題名・無料部分の書き出し・販売の文章、すべての軸として使います。
+
+守ってほしいこと：
+・「悩んでいる」「困っている」のような大きな言葉は使わず、場面と気持ちで書いてください
+・確かに言えることと、そうでないものを分けて書いてください
+
+テーマ：【例：AIで週5時間の事務作業を減らす手順】</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="45">
+<div class="card-head"><span class="num">045</span><div><h3>無料の最後の1行を設計する</h3>
+<p class="when"><span class="when-label">こんな時に</span>どこまで無料で見せるか、毎回迷って公開が遅れる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、有料コンテンツの構成を見る編集者です。
+下に貼る目次のどこで無料と有料を切るか、理由つきで設計してください。
+
+前提：
+・無料部分のゴールは、読者が「この人は私のことを分かっている」と感じ、続きが読みたくなる状態です
+・有料部分のゴールは、買った人が「この値段で良かった」と感じる状態です
+・「何をすべきか」までは無料で惜しみなく見せ、「どうやるか」を有料に置くのが基本の線です
+
+出力：
+1. 線を引く場所と、そこで切る理由
+2. 無料だけ読んだ人の頭に残る言葉（1行）
+3. 無料部分の最後の1行の案を3つ。それぞれ、読者をどんな気持ちで買う判断に送り出すかを添えてください
+4. この線引きの弱点と、もう1つ後ろにずらす場合の代替案
+5. 無料部分を読んだだけで満足してしまう危険がある箇所と、その手当て
+
+守ってほしいこと：
+・理由を言葉にできない線引きは提案しないでください
+・買わせるために不安をあおる書き方はしないでください
+
+【目次と、各項目に書く予定の内容を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="46">
+<div class="card-head"><span class="num">046</span><div><h3>一般論だけの段落を洗い出す</h3>
+<p class="when"><span class="when-label">こんな時に</span>書けたのに一般論っぽくて、中身が薄い気がする</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、原稿の「中身の薄さ」を見つける編集者です。
+書き上がった原稿のどこに私の体験が足りないかを洗い出し、補強の指示書を作ってください。
+
+進め方：
+1. 下に貼る原稿を段落ごとに区切り、それぞれが何を言っている段落かを1行でまとめてください
+2. 段落ごとに「体験で裏づけられている／一般論だけ」を判定し、一般論だけの段落には（要・体験）と印を付けてください
+3. （要・体験）を付けた段落に、私の体験メモから足せる話を割り当てた表を出してください
+　列は「段落／足せる体験／その体験で何を裏づけるか」
+
+指示書のルール：
+・体験メモに合う話が見つからない段落には、「★ここに〇〇のような話があると強くなります。ありますか？」と質問を残してください
+・足す体験ごとに、その段落のどの一文の後ろに入れるかまで書いてください
+・私が渡していない数字・実績・体験を作らないでください。話を盛らないでください
+・原稿の言い回しは私のものです。全体を書き直した本文は出さないでください
+・整えすぎないでください。話し言葉のくずれは残して構いません
+
+【書き上がった原稿を貼る】
+【私の体験メモを、雑な箇条書きで貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="47">
+<div class="card-head"><span class="num">047</span><div><h3>1本目から2本目を切り出す</h3>
+<p class="when"><span class="when-label">こんな時に</span>1本出したきり、次に何を作ればいいか分からない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、続きものの商品を設計する編集者です。
+すでに出した1本目から、2本目として切り出せる企画を考えてください。
+
+進め方：
+1. 1本目を「読者がつまずく場所」の単位で分解してください
+2. 全部を詰めこんだせいで、浅くしか書けていない場所を指摘してください
+3. 2本目の候補を7つ出してください。次の角度を混ぜてください
+　・1章分をまるごと1冊にする深掘り型
+　・読者を絞る型（例：時間がない会社員向け）
+　・工程を切り出す型（例：最初の1週間だけ）
+　・つまずきの解決だけを集める逆引き型
+4. 各候補に「1本目を買った人の誰が買うか」「1本目と食い合わないか」を添えてください
+
+出力：
+候補7つの一覧と、最有力2本の推薦。出す順番と、値段を1本目より上げるか下げるかの考え方も付けてください。
+あわせて、1本目の本文に入れる「2本目への案内文」の下書きも出してください。
+
+1本目と中身が重なる案は出さないでください。重なる場合は、1本目のどこをどう直すかまで書いてください。
+
+【1本目の題名と全文、値段、売れ行きを貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="48">
+<div class="card-head"><span class="num">048</span><div><h3>1問ずつのヒアリングで商品設計</h3>
+<p class="when"><span class="when-label">こんな時に</span>頭の中に商品の案はあるが、形にできないまま数ヶ月</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、商品づくりを横で手伝う設計の担当です。
+私に質問しながら、売る商品の中身と売り方を一緒に決めてください。
+
+進め方：
+・質問は1回につき1つだけ。合計12問を目安にしてください
+・聞く順番は、誰に売るか → その人が今どこで止まっているか → 私が渡せるもの → かけられる時間、で進めてください
+・私の答えがぼんやりしている時は、次に進まず、言い直しを促してください
+・材料が揃ったと判断したら、確認を待たずにまとめに入ってください
+
+まとめで出すもの：
+1. 商品の中身（何が、どんな形で手に入るか）
+2. 値段を3案と、それぞれの根拠
+3. 特典を2つ。「あると助かるが、本編には入れないもの」から選んでください
+4. 知ってもらってから買ってもらうまでの流れを、順を追って
+5. 出すまでにやることの一覧と、かかる日数の目安
+
+守ってほしいこと：
+・私が言っていない実績を、売り文句に使わないでください
+・私が使える時間を超える計画は出さないでください
+
+私の発信ジャンル：【例：オンラインでのヨガ指導】
+それでは、1問目をお願いします。</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="49">
+<div class="card-head"><span class="num">049</span><div><h3>つまずく所に時間を割く教材台本</h3>
+<p class="when"><span class="when-label">こんな時に</span>講座の動画を撮っても、同じ質問が何度も返ってくる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、受講生の理解を最優先に考える教材づくりの担当です。
+下のテーマで、講座動画の台本を作ってください。
+
+進め方：
+・まず、下に貼る質問や感想の記録を読み、受講生が実際につまずいている所を5つ挙げてください
+・その5つに時間を厚く配り、すでに伝わっている所は短く済ませてください
+・順番は、教える側の都合ではなく、受講生がつまずく順に並べてください
+
+出力：
+1. つまずいている所トップ5と、その根拠になった質問の抜き書き
+2. 台本（話す言葉のまま。合計【例：20分】の分量）。かたまりごとに「ここで受講生に何ができるようになるか」を1行
+3. 画面で見せる実演の場面と、その時に言うこと
+4. 最後に出す確認の問いを3つ
+
+守ってほしいこと：
+・専門用語を使うときは、その場で一言の説明を入れてください
+・「簡単です」「すぐできます」と言い切らないでください。つまずくのが普通だと伝えてください
+
+テーマ：【例：AIに文章を書かせる時の指示の出し方】
+【受講生からの質問や感想を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="50">
+<div class="card-head"><span class="num">050</span><div><h3>質問の傾向から次の商品を決める<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>質問には答えているが、貯めっぱなしで活かせていない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、寄せられた質問から次の一手を読む分析担当です。
+これまでに集まった質問を分析して、多い悩みと、次に作るべきものを提案してください。
+
+分析する観点：
+・同じことを聞いている質問をまとめ、数の多い順に並べてください
+・聞かれた時期（最近増えたもの／ずっとあるもの）
+・すでに教材や記事で答えているのに、また聞かれているもの
+・誰も聞いていないが、本当は困っているはずの所
+
+出力：
+1. 多い悩みトップ5。それぞれ件数と、代表的な質問文を1つ
+2. 「答えているのに伝わっていない」項目と、その原因の見立て
+3. 次に作るべきものの提案を3つ。根拠になった質問と、想定する形（記事／動画／講座／テンプレート）を添えてください
+4. 今あるものに足すだけで解決するものと、新しく作るべきものの仕分け
+
+守ってほしいこと：
+・件数は実際に数えてください。数え切れない場合は「おおよその数」と書いてください
+・質問文に書かれていない意図を、言い切りで書かないでください。推測は推測と分けてください
+
+【質問の記録を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="51">
+<div class="card-head"><span class="num">051</span><div><h3>スライド1枚ごとの絵の指示書</h3>
+<p class="when"><span class="when-label">こんな時に</span>話す内容は決まったのに、見た目をどうするかで手が止まる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、人前で話す資料の見せ方を決める担当です。
+下に貼る話す内容を、スライド1枚ずつに割り、各ページの絵の指示までセットで出してください。
+
+条件：
+・1ページに載せる文字は、見出しと3行までにしてください
+・言葉で説明しづらい所ほど、絵や図で見せてください
+・絵の指示は、そのまま画像を作るAIやデザイナーに渡せる細かさで書いてください
+
+出力：
+ページごとに次の4つを表にしてください。
+1. ページ番号と見出し
+2. 画面に載せる文言
+3. 絵のイメージ指示（何を、どこに置き、どんな色味と雰囲気で。図なら要素と矢印の向きまで）
+4. このページで話すこと（一言メモ）
+
+表の後に、聞き手の集中が切れやすい時間帯と、そこに置くと良いページを教えてください。
+
+守ってほしいこと：
+・全ページに絵を入れなくて構いません。文字だけで十分なページは、そう言ってください
+・私が話していない事例を、資料に入れないでください
+
+持ち時間：【例：60分】
+【話す内容のメモ、または当日の台本を貼る】
+作業を始める前に、確認したいことがあれば全部質問してください。</pre></div></details>
+</article>
+<article class="card" data-cat="コンテンツ・商品づくり" data-no="52">
+<div class="card-head"><span class="num">052</span><div><h3>勝ち条件と採点基準を先に決める</h3>
+<p class="when"><span class="when-label">こんな時に</span>書き始めてから、これで良いのか分からなくなる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、作る前に合格ラインを決める編集責任者です。
+まだ本文は書かないでください。先に、この企画で「勝ち」と言える条件を決めてください。
+
+出す内容：
+1. 読者がこれを開く理由
+2. 読者が最後まで読む理由
+3. 読者が保存したくなる理由
+4. 読者が「それは違う」と言いたくなる場所
+5. その反論への返し方
+6. この企画でいちばん強く言える主張
+7. 絶対に言ってはいけない主張と、その理由
+8. この企画の勝ち条件を3行で
+9. 100点満点の採点基準（配点つき。何点なら公開してよいかも書く）
+
+守ってほしいこと：
+・当たりさわりのない基準にしないでください。落ちる案が出る厳しさにしてください
+・採点基準は、書き上がった後に私が自分で採点できる言葉にしてください
+
+企画のテーマ：【例：AI初心者が最初の1ヶ月でやること】
+読者：【例：AIを触ったことがない個人事業主】</pre></div></details>
+</article>
+<h2 class="sec" data-cat="集客・販売・セールス"><span>集客・販売・セールス</span><em>10本</em></h2>
+<article class="card" data-cat="集客・販売・セールス" data-no="53">
+<div class="card-head"><span class="num">053</span><div><h3>商品名を出さずに欲しくさせる</h3>
+<p class="when"><span class="when-label">こんな時に</span>発売前に、何を投稿すればいいか分からない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、コンテンツ販売の集客を担当する専門家です。
+発売前の2週間、商品名を一度も出さずに、読者を欲しくさせる投稿を設計してください。
+
+素材：
+・商品の目次と、無料で見せてよい部分（下に貼ります）
+・私の過去投稿5本（文体の見本）
+
+ゴール：
+商品名を一度も出さずに、その商品を欲しくさせる2週間ぶんの下書き14本。
+
+条件：
+・14本すべて、商品の宣伝はしないでください。読者の中に「この悩み、そろそろ何とかしたい」を育てることだけを狙ってください
+・各投稿に「狙い」と「読者のどんな気持ちを動かすか」を1行ずつ添えてください
+・14本をどの順に出すか、理由つきで提案してください。最後の1本が、告知の1本目に自然につながる形にしてください
+・中身のネタバレは禁止です。有料部分の内容には一切触れないでください
+・商品名、価格、発売日は、14本のどこにも書かないでください
+・文体は過去投稿に合わせ、きれいに整えすぎないでください
+
+【商品の目次と無料部分を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="集客・販売・セールス" data-no="54">
+<div class="card-head"><span class="num">054</span><div><h3>発信から購入までの道すじ設計</h3>
+<p class="when"><span class="when-label">こんな時に</span>フォロワーは増えたのに、売上につながらない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、売れる導線を設計する専門家です。
+私の発信から購入までの道すじを1枚の図にして、各段階の目標数字を決めてください。
+
+私の現状：
+・フォロワー数：【例：1,200人】
+・売っているもの：【例：3,900円の教材】
+・連絡先の受け皿：【例：公式アカウントの登録者200人】
+
+ゴール：
+知ってもらう→興味を持つ→登録する→買う、までの全体図と、各段階の目標数字。
+
+完成条件：
+・数字にはすべて計算の根拠を添えること
+・どこで人が減りそうか（詰まりそうな場所）を、多い順に3つ指摘すること
+・詰まりへの対策を、今週から手をつけられる大きさで書くこと
+・段階ごとに「これを下回ったら手を打つ」という線を1つ決めること
+
+足りない情報があれば、書き始める前にまとめて質問してください。
+根拠を置けない見込みの数字は「仮の数字」と分けて書いてください。</pre></div></details>
+</article>
+<article class="card" data-cat="集客・販売・セールス" data-no="55">
+<div class="card-head"><span class="num">055</span><div><h3>フォロワー目標から投稿本数を逆算</h3>
+<p class="when"><span class="when-label">こんな時に</span>目標だけ立てて、今月何をすべきか決まらない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、数字から計画を組み立てる専門家です。
+私の目標から逆算して、月ごとにやることを決めてください。
+
+私の目標：【例：半年でフォロワー1万人】
+
+進め方：
+1. 計算に必要な今の数字と、私が使える時間を、まとめて質問してください
+2. 答えが揃ったら、確認を待たずに最後まで出してください
+
+出したいもの：
+・月ごとの目標数字（増やす人数、投稿本数、1本あたりの目安）
+・その計算の過程
+
+完成条件：
+・「今の状況で現実的かどうか」の判定をはっきり書くこと
+・無理だと判断した場合は、期間を延ばす案と目標を下げる案の2つを出すこと
+・私の使える時間を超える計画は出さないこと
+
+お世辞は不要です。届かない計画を「頑張れば行けます」で埋めないでください。</pre></div></details>
+</article>
+<article class="card" data-cat="集客・販売・セールス" data-no="56">
+<div class="card-head"><span class="num">056</span><div><h3>埋もれない立ち位置と肩書き3案</h3>
+<p class="when"><span class="when-label">こんな時に</span>似た発信をする人が多くて、自分の色が出せない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、発信者の立ち位置を決める専門家です。
+下に貼る材料から、競合に埋もれない立ち位置を3案作ってください。
+
+材料として貼るもの：
+・経歴と、これまでやってきた仕事
+・小さくても実績と言えること
+・好きなこと、つい時間を使ってしまうこと
+・昔つまずいたこと、引け目に感じていること
+
+出力：
+・立ち位置の案を3つ。それぞれに肩書き案と、ひとことの紹介文
+・3案を同じ物差しで比べた表（勝てそうな理由／同じことを言う人の多さ／私が続けられるか）
+・一番勝てる1案の推薦と、その根拠
+
+条件：
+・かっこよさより、私の材料から本当に言えることを優先してください
+・私が渡していない経歴や実績を、勝手に足さないでください
+・引け目に感じていることは、そのまま出さず「読者の入口」として扱ってください
+
+【材料を箇条書きで貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="集客・販売・セールス" data-no="57">
+<div class="card-head"><span class="num">057</span><div><h3>売上目標から販売の組み立て3案</h3>
+<p class="when"><span class="when-label">こんな時に</span>いくら稼ぎたいかだけ決めて、何本売ればいいか分からない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、コンテンツ販売の計画を立てる専門家です。
+私の目標額から逆算して、半年ぶんの販売計画を作ってください。
+
+私の状況：
+・目標：半年で【例：150万円】を売り上げる
+・使える作業時間：週【例：10時間】
+・今できること：【例：発信歴半年、販売の経験はまだなし】
+
+進め方：
+1. 目標額を「本数×価格×売れた数」に分けた案を3つ出してください
+　A：本数を絞って価格を上げる／B：中くらいの価格で数本／C：安く数を出す
+　各案に、必要な作業時間と、うまくいかない場合の心配ごとを添えてください
+2. 私の状況に一番合う案を1つ選び、月ごとの計画表にしてください
+　・各月の「作る本数／価格／その月の売上と累計の目安」
+　・各月の作業を「AIに任せること」と「私が決めること」に分けてください
+
+守ってほしいこと：
+・数字には計算の根拠を添え、置けないものは「仮の数字」と書いてください
+・私の作業時間を超える計画は立てず、超えるなら目標額のほうを下げて示してください
+・最初の1〜2ヶ月が地味になる理由と、その間に何を見て自分を採点するかも書いてください</pre></div></details>
+</article>
+<article class="card" data-cat="集客・販売・セールス" data-no="58">
+<div class="card-head"><span class="num">058</span><div><h3>1つ目の型で2つ目を立ち上げる</h3>
+<p class="when"><span class="when-label">こんな時に</span>1つ目がうまくいったが、次の展開が決められない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、複数の発信を並行して育てる設計の専門家です。
+1つ目のアカウントで作った型を使って、2つ目の立ち上げ計画を作ってください。
+
+下に貼るもの：
+・1つ目の概要（分野／出したもの／価格／売れ行き／集客のやり方）
+・うまくいったこと、いかなかったこと（雑な箇条書きで結構です）
+・私が他に語れそうな分野
+
+進め方：
+1. 成功した理由を「その分野だから通じたこと」と「分野が変わっても使えること」に分けてください。持ち出せるのは後者だけです
+2. 2つ目の分野の候補を5つ。各候補に「私の実体験がどれくらい乗るか（濃い・中くらい・薄い）」と「1つ目の読者と食い合わないか」を添えてください
+3. 最有力の1つを推薦し、最初の1ヶ月にやることを一覧にしてください
+
+条件：
+・2つ目は「1つ目の半分の時間で同じところまで行く」ことを目標に組んでください
+・1つ目の運用と同時に回せる作業量に収めてください。収まらない場合は、1つ目の何を減らすかまで書いてください
+
+【1つ目のアカウントの情報を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="集客・販売・セールス" data-no="59">
+<div class="card-head"><span class="num">059</span><div><h3>書く・叩く・直すの3役で仕上げる</h3>
+<p class="when"><span class="when-label">こんな時に</span>自分で書いた販売ページの、どこが弱いか分からない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、3つの役をひとりで順番に演じる編集チームです。
+下の材料から販売ページの文章を、3周かけて仕上げてください。
+
+進め方：
+1. 書く係
+　読者の困りごとと、渡した証拠をもとに初稿を書いてください。ここでは完成させなくて構いません。一番強い流れと、言いたいことの絞り込みを優先してください
+2. 厳しく批判する係
+　初稿を点検してください。読む人に合っているか／言いたいことが1つに絞れているか／証拠のない言い切りがないか／申し込みへの誘い方が不自然でないか／読んで誤解しそうな箇所はどこか。問題を重い順に並べ、この時点ではまだ直さないでください
+3. 直す係
+　初稿と指摘をもとに最終版を作ってください。大事な根拠や注意書きは削らず、削るなら「重複→一般論→長い前置き」の順にしてください
+
+出力：
+3周ぶんをすべて見せたうえで、最後に最終版だけをもう一度まとめて出してください。
+
+お世辞は不要です。2周目は、他人の原稿を叩くつもりで書いてください。
+
+【商品の情報と、書きかけの文章を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="集客・販売・セールス" data-no="60">
+<div class="card-head"><span class="num">060</span><div><h3>販促をAIに頼むときの発注書</h3>
+<p class="when"><span class="when-label">こんな時に</span>毎回説明が足りず、ずれた原稿が返ってくる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の販促の制作を任される担当者です。
+下の発注書を読み、足りない情報を洗い出してから制作に入ってください。
+
+今回頼みたいもの：【例：講座の案内ページ】
+
+発注書：
+・この仕事で達成したいこと：
+・数字で見たい成果（売上・申し込み・問い合わせなど）：
+・誰に向けるか。その人が今おかれている状況：
+・その人が困っていることと、手に入れたい状態：
+・売るものと、その中身：
+・その人にとって、なぜ大事か：
+・証拠になるもの（実績・数字・お客様の声）：
+・その人が他に選べる手段：
+・どこで届けるか（投稿・広告・案内文・お便りなど）：
+・使えるお金と、締め切り：
+・必ず入れてほしいこと／使ってはいけない表現：
+・出したいものの形（何を、どの順で）：
+
+守ってほしいこと：
+・事実と推測を分けて書いてください
+・数字は自分で計算し直してから出してください
+・空欄のままの項目は勝手に補わず、「不足」として先に質問してください
+
+承認の線引き：
+・調べる、考える、下書きするところまでは、確認なしで進めてください
+・公開・送信・課金・削除など取り消せない操作は、実行前に必ず私の承認を取ってください</pre></div></details>
+</article>
+<article class="card" data-cat="集客・販売・セールス" data-no="61">
+<div class="card-head"><span class="num">061</span><div><h3>タイトル・表紙文言・引用を各10案</h3>
+<p class="when"><span class="when-label">こんな時に</span>タイトルも表紙の文言も、いつも似た言い回しになる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、人の手を止める言葉を作る書き手です。
+下のテーマで、3種類の言葉をそれぞれ10案ずつ出し切ってください。
+
+テーマ：【例：AIで発信の時間を半分にする方法】
+
+出力：
+1. タイトル案 10個
+2. 表紙画像に入れる文言 10個
+3. 引用に使える一文 10個
+4. 30個の中から、私に薦める組み合わせを3組（理由を1行ずつ）
+
+禁止事項：
+・同じ言い回しの使い回し。30個すべて違う切り口にしてください
+・表紙の文言とタイトルを同じにすること
+・表紙の文言を長くすること。ひと目で読み終わる長さに収めてください
+・「〜という時代へ」「今こそ〜」のような、いかにもAIが書いた言い回し
+・引用の一文を、中途半端に長くすること
+
+案が尽きたと感じても、途中で切り上げず必ず10個ずつ出し切ってください。</pre></div></details>
+</article>
+<article class="card" data-cat="集客・販売・セールス" data-no="62">
+<div class="card-head"><span class="num">062</span><div><h3>申込ページを目的で監査する</h3>
+<p class="when"><span class="when-label">こんな時に</span>見た目は整えたのに、申し込みが一向に増えない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、申し込みや購入に責任を持つ監査担当です。
+下に渡すページを、私の好みではなく目的で監査してください。
+
+このページの前提：
+・目的：【例：無料相談への申し込み】
+・見る人：【例：発信を始めて半年の個人事業主】
+・一番伝えたいこと：ページの文章の中から、あなたが1つに絞って言い当ててください
+
+見る観点：
+・開いて3秒で、何のページか伝わるか
+・目線がどの順に動くか。最初に目に入るものが、一番大事なものか
+・迷わず次の行動に進めるか。行動をうながす場所が見つけやすいか
+・信頼を下げている箇所はないか
+・携帯電話の画面で見たときに崩れないか
+・文字が小さすぎないか、行と行の間が詰まりすぎていないか
+
+出力：
+問題を「重大／気になる／好みの問題」に分け、重い順に修正案とセットで出してください。
+そのあと、直したあとの構成案を1枚にまとめてください。
+
+画面から確かめられる事実と、成果についての推測は分けて書いてください。
+
+【ページの文章か画像を渡す】</pre></div></details>
+</article>
+<h2 class="sec" data-cat="リサーチ・分析"><span>リサーチ・分析</span><em>15本</em></h2>
+<article class="card" data-cat="リサーチ・分析" data-no="14">
+<div class="card-head"><span class="num">014</span><div><h3>テーマの徹底リサーチ（出典つき）</h3>
+<p class="when"><span class="when-label">こんな時に</span>発信や講座で使う情報の裏取りをしたい</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、調査の専門家です。
+【テーマ】について、発信に使える形でリサーチしてください。
+
+守ってほしいこと：
+・公式発表や一次情報を優先すること
+・「確認できた事実」「第三者の意見」「あなたの推測」を必ず分けて書くこと
+・数字には出典と日付をつけること。確認できない情報は「未確認」と明記すること
+
+出力：
+1. 3行でわかる要約
+2. 押さえるべきポイント5つ（各根拠つき）
+3. よくある誤解と、正しい情報
+4. 発信に使う場合の注意点</pre></div></details>
+</article>
+<article class="card" data-cat="リサーチ・分析" data-no="15">
+<div class="card-head"><span class="num">015</span><div><h3>競合アカウントの構造分析</h3>
+<p class="when"><span class="when-label">こんな時に</span>伸びてる同ジャンルの人から何を学べばいいか分からない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、SNSアカウントの分析担当です。
+下に貼る競合の投稿から、真似すべき「構造」と、真似してはいけない「その人固有のもの」を分けてください。
+
+出力：
+1. 投稿に共通する構造（書き出し／展開／締めの型）
+2. その人の個性によるもの（実績・キャラ・経歴など、真似できない部分）
+3. 私のアカウントに取り入れるなら、の具体案3つ
+
+守ってほしいこと：
+・文章のコピーや言い回しの流用は提案しないこと。構造だけを抽出すること
+
+競合の投稿：【5〜10本貼る】
+私のアカウント：【方向性を1〜2行】</pre></div></details>
+</article>
+<article class="card" data-cat="リサーチ・分析" data-no="16">
+<div class="card-head"><span class="num">016</span><div><h3>数字から「来週の一手」を決める</h3>
+<p class="when"><span class="when-label">こんな時に</span>インサイトを見ても「ふーん」で終わってしまう</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、データから打ち手を考える分析担当です。
+下の数字から、来週やるべきことを決める手伝いをしてください。
+
+出力：
+1. 数字の変化で注目すべき点3つ（良い変化・悪い変化の両方）
+2. 変化の原因の仮説（「事実」と「仮説」を分けて）
+3. 来週の打ち手の提案3つ（効果が大きそうな順）
+4. 逆に「やめていいこと」があれば1つ
+
+守ってほしいこと：
+・データにない原因を断定しないこと
+・打ち手は「明日から実行できる具体さ」で書くこと
+
+今週の数字：【フォロワー・インプ・保存数などを貼る／スクショ添付でも可】
+先週の数字：【同上】</pre></div></details>
+</article>
+<article class="card" data-cat="リサーチ・分析" data-no="17">
+<div class="card-head"><span class="num">017</span><div><h3>アンケート・お客様の声の集計と発見</h3>
+<p class="when"><span class="when-label">こんな時に</span>集めた声を眺めるだけで活かせていない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、顧客の声を分析する担当です。
+下のアンケート回答（またはお客様の声）を分析してください。
+
+出力：
+1. 多かった声トップ5（件数つき）
+2. 少数だけど重要な声（見落とすと損するもの）
+3. この結果から作るべきコンテンツ・商品の提案3つ
+4. 発信にそのまま使える「読者の生の言葉」の候補5つ
+
+守ってほしいこと：
+・回答者が特定される情報（名前・固有名詞）は出力に含めないこと
+・件数の集計は正確に。数え間違いそうなら「概数」と書くこと
+
+【回答データを貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="リサーチ・分析" data-no="18">
+<div class="card-head"><span class="num">018</span><div><h3>意思決定の壁打ち（反対意見つき）</h3>
+<p class="when"><span class="when-label">こんな時に</span>AとBで迷っている。誰かに相談したい</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の意思決定を手伝う参謀です。ただし、私に忖度しないでください。
+
+決めたいこと：【例：新講座の価格を3万円にするか5万円にするか】
+前提：【状況・制約・目標】
+
+進め方：
+1. 判断に必要な情報が足りなければ、先に質問してください
+2. 各選択肢のメリット・デメリットを同じ基準で比べてください
+3. それぞれの案について「一番強い反対意見」を出してください
+4. あなたの推薦と、「こうなったら判断を変えるべき」という条件を出してください
+
+守ってほしいこと：
+・「どちらも良いと思います」で終わらせないこと。必ずどちらかを推薦すること</pre></div></details>
+</article>
+<article class="card" data-cat="リサーチ・分析" data-no="63">
+<div class="card-head"><span class="num">063</span><div><h3>思い込みを反証から先に崩す</h3>
+<p class="when"><span class="when-label">こんな時に</span>調べた情報を、どこまで信じていいか分からない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の思い込みを崩すために調べる責任者です。
+下の「私が正しいと思っていること」を、否定する材料から先に集めてください。
+
+私が正しいと思っていること：【例：個人向けのAI講座は今から出しても間に合う】
+これをもとに決めたいこと：【例：秋に講座を出すかどうか】
+
+調べ方の条件：
+・まず反証から探してください。裏づけになる材料は、そのあとで集めてください
+・公式の発表、元の資料、法律の条文、決算資料など、一次情報を優先してください
+・「確認できた事実」「他の人の解釈」「あなたの推論」「未確認」の4つに必ず仕分けてください
+・数字には、いつの数字か、どの範囲の話か、何と比べた数字か、どこで見つけたかを添えてください
+・情報が食い違うときは、なぜ食い違うのかまで調べてください
+
+出力の順番：
+1. この思い込みが崩れるとしたら、どういう条件のときかを3行で
+2. 思い込みを否定する材料と、その根拠
+3. 思い込みを支える材料と、その根拠
+4. 両方を見比べたうえでの判定（そのまま進める／条件つきで進める／考え直す）
+5. まだ分かっていないこと
+6. 決める前に、あと何が分かれば判断できるか
+7. 参照した資料の一覧
+
+調べる深さやまとめ方は任せます。材料が揃ったら、確認を待たずに最後まで進めてください。
+裏が取れなかったものは、必ず「未検証」と書いてください。
+お世辞は不要です。私の思い込みに合う材料ばかりを集めないでください。</pre></div></details>
+</article>
+<article class="card" data-cat="リサーチ・分析" data-no="64">
+<div class="card-head"><span class="num">064</span><div><h3>担当を分けて並べて調べさせる</h3>
+<p class="when"><span class="when-label">こんな時に</span>ひとつの見方に寄った結論しか返ってこない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、複数の担当者を束ねる調査の統括役です。
+下のテーマを担当ごとに分けて調べたうえで、最後にひとつにまとめてください。
+
+テーマ：【例：私の分野で来年伸びそうな売り方】
+
+担当の分け方：
+・市場を見る担当
+・競合を見る担当
+・お客さんの気持ちを見る担当
+・反対意見だけを探す担当
+・全部をまとめる統括担当
+
+各担当が出すこと：
+・確認できた事実
+・大事な発見と、その根拠
+・はっきりしない点
+・追加で確かめるべきこと
+
+統括担当が出すこと：
+・全員の意見が一致した点
+・意見が割れた点と、その理由
+・一番強い根拠と、一番大きな危険
+・私が次に取るべき動き
+
+条件：
+・各担当は、他の担当の結論を前提にせず、それぞれ独立に考えてください
+・最後の判断は多数決ではなく、根拠の強さで決めてください
+・採用しなかった意見と、その理由も残してください</pre></div></details>
+</article>
+<article class="card" data-cat="リサーチ・分析" data-no="65">
+<div class="card-head"><span class="num">065</span><div><h3>伸びているテーマから明日のネタ10個</h3>
+<p class="when"><span class="when-label">こんな時に</span>同じネタばかりで、周りの流れに乗れていない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の分野の動きを追う調査担当です。
+今どんなテーマが伸びているかを調べ、私がすぐ使えるネタに変えてください。
+
+私の分野：【例：会社員の副業×AI活用】
+
+ゴール：
+明日から使える投稿ネタ10個（仮のタイトルつき）。
+
+完成条件：
+・伸びているテーマと、伸びている理由の分析があること
+・まだ書いている人が少ない狙い目と、今から入っても遅い場所が区別されていること
+・ネタ10個が、その分析のどれに紐づくのか分かること
+・各ネタに「私の実体験のどれを混ぜると強くなるか」の提案が1行あること
+
+調べ方や深さは任せます。材料が揃ったら、確認を待たずに最後まで出してください。
+数字や事実には出典を添え、裏が取れなかったものは「未検証」と書いてください。
+流行っているだけで私の読者に関係のないテーマは、理由をつけて外してください。</pre></div></details>
+</article>
+<article class="card" data-cat="リサーチ・分析" data-no="66">
+<div class="card-head"><span class="num">066</span><div><h3>話題の新機能を3行で語れる状態に</h3>
+<p class="when"><span class="when-label">こんな時に</span>新しい話題についていけず、触れるのが怖い</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、新しい話題を初心者に届ける解説者です。
+下の対象について、私が自分の言葉で説明できる状態まで持っていってください。
+
+対象：【例：先週発表された文章生成の新機能】
+
+進め方：
+1. 提供元の公式発表や資料で、まず事実を確認してください
+2. 使ってみた人の感想も集め、公式の説明と食い違う点があれば書き出してください
+
+出力：
+・「結局なにがすごいのか」を3行で
+・これまでと何が変わったのかの比較
+・私の読者にとって役に立つ場面を3つ
+・向いていない使い方と、期待しすぎるとがっかりする点
+・そのまま話せる1分ぶんの説明の台本
+・投稿に使えるひとこと案を5つ
+
+守ってほしいこと：
+・提供元が言っていること、使った人の感想、あなたの推測を分けてください
+・料金や使える範囲には、発表日と出典を添えてください
+・確認できなかった機能は「未確認」と書き、あるかのように書かないでください</pre></div></details>
+</article>
+<article class="card" data-cat="リサーチ・分析" data-no="67">
+<div class="card-head"><span class="num">067</span><div><h3>分析画面の数字を表に正確に転記</h3>
+<p class="when"><span class="when-label">こんな時に</span>画面の数字を、手で書き写すだけで時間が消える</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、画面の数字を正確に書き起こす転記の担当です。
+渡す分析画面の画像から数字を読み取り、そのまま次の相談に使える表に起こしてください。
+
+進め方：
+1. 画像に写っている数字を、ひとつ残らず表に起こしてください（項目・数値・期間）
+2. 前の期間と比べて、上がったもの・下がったものに分けてください
+3. 数字どうしの食い違いや、期間がそろっていない箇所に印をつけてください
+
+完成条件：
+・表をそのまま別の相談に貼れば、打ち手を考えられる状態になっていること
+・どの数字がどの期間のものか、表を見ただけで分かること
+・読み取れた数字と、読み取れなかった箇所が、はっきり分かれていること
+
+守ってほしいこと：
+・読み取れない数字は、推測せず「判読できません」と書いてください
+・数字から言えないことは「推測」と分けてください
+・画像に写っていない数字を、それらしく作らないでください
+
+【分析画面の画像を渡す】</pre></div></details>
+</article>
+<article class="card" data-cat="リサーチ・分析" data-no="68">
+<div class="card-head"><span class="num">068</span><div><h3>アカウント丸ごとの辛口診断</h3>
+<p class="when"><span class="when-label">こんな時に</span>投稿は続けているのに、半年フォロワーが動かない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、経営の相談を受ける立場の、辛口な診断役です。
+下に貼る私のアカウントを丸ごと診断し、30日ぶんの改善計画を出してください。
+
+貼るもの：
+・プロフィール文
+・直近30投稿の本文と、それぞれの反応の数字
+
+診断してほしいこと：
+・このアカウントが今どういう状態か、ひとことで
+・反応が良かった投稿と悪かった投稿の、はっきりした違い
+・プロフィールに書いてあることと、実際の投稿内容のずれ
+・初めて見た人が「何のアカウントか」を3秒で言えるかどうか
+
+出力：
+1. 診断結果（根拠にした投稿の番号つき）
+2. 30日の改善計画。10日ごとに区切り、各期間の「やること」と「見る数字」
+3. 今すぐ1つだけ直すなら何か
+
+お世辞は不要です。私が傷つくかどうかは考えなくて結構です。
+数字から言えないことは「推測」と分けてください。
+分析の進め方は任せます。途中で私に確認しなくて構いません。
+
+【プロフィール文と直近30投稿を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="リサーチ・分析" data-no="69">
+<div class="card-head"><span class="num">069</span><div><h3>伸びている表紙画像5枚の解剖</h3>
+<p class="when"><span class="when-label">こんな時に</span>自分の表紙だけ、並べると明らかに素人っぽい</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、目を引く画像を設計する専門家です。
+渡す5枚の表紙画像を解剖し、私がそのまま使える指示書に変えてください。
+
+解剖する観点：
+・色の組み合わせと、背景と文字の明るさの差
+・入っている文字の量と、一番大きい文字が何か
+・写真や人物の置き方、余白の取り方
+・5枚に共通していること、1枚だけ違うこと
+
+出力：
+1. 5枚それぞれの分解（上の観点ごとに）
+2. 5枚に共通する法則と、目を引いている理由
+3. 法則をもとにした、私用の指示書
+　（画像の縦横の比率／色の指定／文字数の上限／配置／やってはいけないこと）
+4. その指示書どおりに作る場合の、文言の例を3案
+
+条件：
+・「おしゃれ」「かっこいい」のような感想では書かず、作る人が迷わない言葉にしてください
+・私の分野に合わない要素は、まねをせず「合わないので外す」と理由つきで書いてください
+
+【表紙画像を5枚渡す】</pre></div></details>
+</article>
+<article class="card" data-cat="リサーチ・分析" data-no="70">
+<div class="card-head"><span class="num">070</span><div><h3>判断に使う数字だけに絞り込む<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>表を開いた瞬間、行が多すぎて何も見られない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、大量の記録を整える下ごしらえの担当です。
+下のデータを、私が判断に使える形まで絞り込んでください。
+
+最後に判断したいこと：【例：来月どの商品に力を入れるか】
+渡すデータ：【例：半年ぶんの売上明細と、問い合わせの記録】
+
+下ごしらえですること：
+・日付の書き方をそろえてください
+・商品名や人名の表記のゆれをそろえてください
+・重なっている行を取り除いてください
+・空欄がどこにいくつあるかを数えてください
+・必要な単位でまとめ直し、多い順に並べてください
+・明らかにおかしい値を見つけて印をつけてください
+
+最後に私に返すもの：
+・大きく変わったところ
+・上位のものと、下位のもの
+・おかしな値と、その扱い方の提案
+・判断に使える数字
+・数が少なすぎるなどの理由で、判断に使えない数字
+
+守ってほしいこと：
+・下ごしらえと、そこから何が言えるかの判断は、分けて出してください
+・元のファイルは書き換えず、別の名前で保存してください
+・取り消せない操作は、実行前に必ず私に確認してください</pre></div></details>
+</article>
+<article class="card" data-cat="リサーチ・分析" data-no="71">
+<div class="card-head"><span class="num">071</span><div><h3>競合の動きだけを見張って報告<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>競合や相場の動きを、いつも後から人づてに知る</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、外の動きだけを見張る監視担当です。
+私の側の数字は見なくて結構です。下に挙げる相手の動きを定期的に確認し、大事な変化があったときだけ知らせてください。
+
+見張る相手：【例：同じ分野の3アカウントの発信内容と価格】
+確認する間隔：【例：毎週月曜の朝】
+
+大事な変化とみなすもの：
+・相手の価格や提供内容が変わった
+・相手から新しい商品や機能が出た
+・相手が打ち出している言葉が変わった
+・市場や提供元から、私の判断に影響する発表があった
+
+知らせ方：
+・大事な変化があるときだけ、詳しく報告してください
+・何も変わっていないときは「変化なし」の一行で結構です
+
+報告に入れること：
+・何が変わったか／いつ確認したか
+・そう判断した根拠（どこを見たか）
+・私への影響と、取るべき動き
+
+守ってほしいこと：
+・毎回の記録を同じファイルに書き足し、前回と見比べてから判断してください
+・古い情報を新しい情報として扱わないでください
+・確認できた事実と推測を分けてください
+・外部への書き込みや連絡は、私の承認を取ってから行ってください</pre></div></details>
+</article>
+<article class="card" data-cat="リサーチ・分析" data-no="72">
+<div class="card-head"><span class="num">072</span><div><h3>毎週の数字を来週の重点に変える</h3>
+<p class="when"><span class="when-label">こんな時に</span>毎週なんとなく反省して、翌週も同じことをする</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、毎週の数字を一緒に見る相談相手です。
+今週の記録から、来週の重点を決めてください。
+
+出すもの：
+1. 今週のふりかえり
+　・数字が動いた理由の分析
+　・うまくいったことは、来週も同じ結果を出すためのやり方を言葉にしてください
+　・うまくいかなかったことは、やめる／変える／続ける、のどれかに判定してください
+2. 来週の重点3つ
+　・各項目に、何がどうなったら達成かの数字
+　・3つ以外は今週いったん捨てる、とはっきり書いてください
+3. やめる判定を出したものについて、やめた後に空く時間の使い道
+
+守ってほしいこと：
+・データから言えないことは「推測」と分けてください
+・数字が動かなかった週に、無理に理由を作らないでください
+・お世辞は不要です。続けても意味が薄い作業があれば、はっきり指摘してください
+
+【今週の数字と所感を貼る】</pre></div></details>
+</article>
+<h2 class="sec" data-cat="意思決定・戦略"><span>意思決定・戦略</span><em>10本</em></h2>
+<article class="card" data-cat="意思決定・戦略" data-no="73">
+<div class="card-head"><span class="num">073</span><div><h3>「なんとなく」を実行計画に変える</h3>
+<p class="when"><span class="when-label">こんな時に</span>やりたい気持ちはあるのに、何から手をつけるか決まらない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、この件の責任者です。
+私のふわっとした相談を、そのまま動ける計画に変えてください。
+
+進め方：
+1. 私の話を ①実現したい状態 ②必要な成果物 ③判断の材料 ④制約とやらないこと ⑤終わったと言える条件、の5つに整理してください
+2. 足りない部分は勝手に埋めず、大事な順に最大5問だけ質問してください
+3. 私が答えたら、作業の順番・途中で私に見せる地点・最後の確認方法を出してください
+4. 私が承認してから着手してください
+
+守ってほしいこと：
+・私が言っていない予算や期限を、勝手に決めないでください
+・「たぶんこうだろう」で埋めた箇所は、そう分かるように書いてください
+
+今回やりたいこと：【例：受講生向けに、月1回の勉強会を始めたい】
+それでは、整理からお願いします。</pre></div></details>
+</article>
+<article class="card" data-cat="意思決定・戦略" data-no="74">
+<div class="card-head"><span class="num">074</span><div><h3>選択肢を同じものさしで採点</h3>
+<p class="when"><span class="when-label">こんな時に</span>どの案も良く見えて、決め手がないまま日が過ぎていく</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の相談役です。
+「状況によります」で終わらせず、決められる材料まで出してください。
+
+決めたいこと：【例：来期の主力商品を何にするか】
+選択肢：【A案／B案／C案】
+いちばん大事にしたいこと：【例：無理なく続けられること】
+制約：予算、期限、手伝ってくれる人
+
+進め方：
+1. まず判断の軸を作り、大事さの割合を合計100点で配ってください
+2. その軸で全部の案を同じ基準で採点し、表にしてください
+3. 配点そのものを疑ってください。「この軸に30点も配ってよいのか」と自分で問い直し、配点を1回だけ組み替えた第2案の表も出してください
+4. 迷いを減らすために、先に試せる小さな実験を1つ設計してください
+5. 2つの配点で順位が入れ替わったかどうかを示し、入れ替わったならどちらの配点が私の本心に近いかを問い返してください
+
+材料が足りないときは、結論より先に「何が要るか」を言ってください。</pre></div></details>
+</article>
+<article class="card" data-cat="意思決定・戦略" data-no="75">
+<div class="card-head"><span class="num">075</span><div><h3>やる・やらないの最終判定</h3>
+<p class="when"><span class="when-label">こんな時に</span>迷ったまま数週間、まだ着手も撤退もできていない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、重い判断を検証する担当者です。
+これをやるか、やらないかを、根拠つきで判定してください。
+
+判断したいこと：【例：新しいサービスを今期中に出すか】
+今わかっている事実：【例：問い合わせが月10件、作れる時間は週5時間】
+
+出してほしいこと：
+・この案の強みと弱み
+・私に対する、いちばん強い反対意見
+・「この前提が崩れたら話が変わる」という条件
+・判断のために、まだ確かめていないこと
+・現時点の結論（やる／条件つきでやる／やらない）と、その確信の度合い
+
+守ってほしいこと：
+・わからない数字を、推測で埋めないでください
+・結論と、その根拠は分けて書いてください
+・私が渡していない実績や体験談を作らないでください</pre></div></details>
+</article>
+<article class="card" data-cat="意思決定・戦略" data-no="76">
+<div class="card-head"><span class="num">076</span><div><h3>3案を出してから1本に絞る</h3>
+<p class="when"><span class="when-label">こんな時に</span>無難な案しか出てこなくて、毎回どこかで見た形になる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、企画を3方向から作る担当者です。
+同じテーマで、性格の違う3案を出してから1つに絞ってください。
+
+テーマ：【例：初心者向けのAI活用講座の案内】
+届けたい相手：【例：AIを触ったことがない個人事業主】
+
+出す3案：
+・A案：いちばん分かりやすい案
+・B案：いちばん尖った案
+・C案：いちばん手元に残したくなる案
+
+各案に付けるもの：
+・仮タイトル
+・書き出しの3行
+・いちばん言いたいこと
+・読み終わったときの気持ち
+・強みと弱み
+・広がる見込みと、荒れる心配
+
+最後に3案を比べて、採用する1つを理由つきで選んでください。
+真ん中を取った平均の案には、絶対に逃げないでください。</pre></div></details>
+</article>
+<article class="card" data-cat="意思決定・戦略" data-no="77">
+<div class="card-head"><span class="num">077</span><div><h3>半年後に失敗した前提で洗う</h3>
+<p class="when"><span class="when-label">こんな時に</span>走り出す直前、なんとなく嫌な予感だけが消えない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の案を守るために本気で壊す検証役です。
+「半年後、この案は失敗した」と決めつけて、原因を先に洗い出してください。
+
+対象：【例：秋に始める少人数の伴走講座】
+成功と言える状態：【例：定員6名が埋まり、全員が最後まで続く】
+
+洗い出す視点：
+・思い違いや、事実の取り違え
+・お客さまの気持ちの動き
+・運営の手間と、私の体力
+・お金の出入り
+・約束ごとや決まりごと
+・信用の面
+
+各原因に付けるもの：
+起きる仕組み／起きやすさ／損の大きさ／早めに気づける危険信号／防ぐ手／起きた後の立て直し方
+
+最後に「今すぐ止める／条件つきで進める／気にしなくてよい」の3つに分け、
+進むかどうかの結論を1つ出してください。</pre></div></details>
+</article>
+<article class="card" data-cat="意思決定・戦略" data-no="78">
+<div class="card-head"><span class="num">078</span><div><h3>契約書の不利な条項だけ抜く</h3>
+<p class="when"><span class="when-label">こんな時に</span>送られてきた契約書を、読み飛ばして署名しそうになる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、契約書を読み慣れた確認役です。
+下に貼る書面から、私に不利になりうる部分と、確認すべき点だけを抜き出してください。
+
+見てほしい点：
+・お金（金額、支払う時期、値上げ、遅れたときの扱い）
+・期間と、途中でやめるときの条件
+・こちらの責任がどこまで及ぶか
+・作ったものを誰のものとして扱うか
+・他社との取引や、発信を縛る決まり
+・自動で更新される決まり
+
+出力：
+1. 気になる条項を「重い／気になる／確認だけ」の3段階に並べてください
+2. 各条項に「何が不利か」と「相手にそのまま聞ける質問文」をセットで付けてください
+3. 書面に書かれていない、抜けている取り決めも指摘してください
+
+私の立場：【例：講座を提供する側の個人事業主】
+最終判断は私と専門家がします。断定ではなく、確認すべき論点として出してください。
+
+【契約書・規約を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="意思決定・戦略" data-no="79">
+<div class="card-head"><span class="num">079</span><div><h3>提案ではなく完成物まで作らせる</h3>
+<p class="when"><span class="when-label">こんな時に</span>相談すると案は出るのに、いつまでも手元に物が増えない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、案を出す人ではなく、完成まで持っていく責任者です。
+最後まで作り切って、そのまま使える物を渡してください。
+
+作ってほしいもの：【例：受講生に配る「はじめかたガイド」1枚】
+使う人：【例：申し込んだばかりで、まだ何も分かっていない受講生】
+完成条件：【例：これ1枚で、初日の準備が終わる状態】
+
+進め方：
+今の状況の確認 → 計画 → 制作 → 動くかの確認 → 使う人の目線での検品 → 直し、まで進めてください。
+やり方や工程の順番は任せます。途中でいちいち私に確認しなくて構いません。
+
+ただし：
+・取り消せない操作（公開、送信、支払い、削除、上書き）の直前だけ、必ず私の承認を取ってください
+・元に戻せる作業は、そのまま進めて構いません
+
+最後の報告は「作ったもの」「確かめたこと」「残っている不安」の3つだけにしてください。</pre></div></details>
+</article>
+<article class="card" data-cat="意思決定・戦略" data-no="80">
+<div class="card-head"><span class="num">080</span><div><h3>どんな仕事にも効く発注の型</h3>
+<p class="when"><span class="when-label">こんな時に</span>頼み方が毎回ばらばらで、返ってくる質も安定しない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の仕事を引き受ける担当者です。
+下の内容で作業してください。埋まっていない項目があれば、先に質問してください。
+
+目的：【例：来月の説明会で配る資料を仕上げる】
+背景：申し込みが伸びていない。当日は私が話しながら配る
+材料：【例：去年の資料、受講生の感想20件】
+制約：紙2枚まで。締切は今週末。むずかしい言葉は使わない
+出力の形：結論 → 根拠 → 当日の話し方、の順
+優先すること：正しさ ＞ 読みやすさ ＞ 見た目
+
+任せる範囲：
+調べる・考える・下書きを作る・元に戻せる確認は、確認を取らずに進めてください。
+公開、送信、支払い、削除、既存のものへの上書きは、必ず私に確認してください。
+
+注意：
+事実と、推測と、わからないことは分けて書いてください。
+確かめられない数字や事例は作らないでください。
+
+この6つの項目は、今後どんな仕事を頼むときも同じ形で使えます。中身だけ書き換えてください。</pre></div></details>
+</article>
+<article class="card" data-cat="意思決定・戦略" data-no="81">
+<div class="card-head"><span class="num">081</span><div><h3>5つの役を3周させて作り込む</h3>
+<p class="when"><span class="when-label">こんな時に</span>一発で出た答えが浅くて、結局あとから自分で作り直す</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは今から、ふつうの相談相手ではなく、5人の担当がいる制作チームとして動いてください。
+早く答えることより、そのまま使える物を作ることを優先してください。
+
+役の順番：
+1. 戦略担当：相手が欲しいもの、勝ち筋、来そうな反論を整理してください
+2. 設計担当：完成までの工程、必要な材料、つまずきそうな所を出してください
+3. 制作担当：実際に作ってください。1案に絞らず、必ず3案出して比べてください
+4. 破壊担当：褒めずに壊してください。退屈な所、うそっぽい所、AIが書いたと分かる所を指摘してください
+5. 仕上げ担当：そのまま出せる状態まで整えてください
+
+これを3周してください。1周目は方向づけ、2周目は弱点つぶし、3周目は完成形です。
+
+毎周、必ず出すもの：
+判断／その理由／足りない情報／失敗しそうな点／直した所／次にやること／100点満点の自己採点
+
+ふわっとした一般論と、きれいごとは禁止です。
+テーマ：【例：受講生向けの「AIで議事録を作る」解説記事】</pre></div></details>
+</article>
+<article class="card" data-cat="意思決定・戦略" data-no="82">
+<div class="card-head"><span class="num">082</span><div><h3>見本の型のまま中身を入れ替え</h3>
+<p class="when"><span class="when-label">こんな時に</span>毎回ゼロから資料を作り直して、見た目もばらばらになる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、資料を作り直す担当者です。
+下に渡す見本を型として使い、中身だけ新しくした資料を作ってください。
+
+そのまま保つもの：
+・全体の構成と、話が進む順番
+・見出しの位置と、言い回しの雰囲気
+・余白、色づかい、図表の見せ方
+・注釈や出典の書き方
+
+新しくするもの：
+・数字と、その対象期間
+・本文
+・図表の中身
+・結論と、次にやること
+
+完成条件：
+・見出しだけ追っても、話がつながること
+・1ページで言いたいことは1つだけにすること
+・数字と本文が食い違わないこと
+・足りないデータは作らず「要確認」と書くこと
+
+最後に、変えた所・元の資料と照らし合わせた所・私に確認してほしい所を、まとめて出してください。
+
+【見本の資料と、新しい数字を貼る】</pre></div></details>
+</article>
+<h2 class="sec" data-cat="検品・品質チェック"><span>検品・品質チェック</span><em>10本</em></h2>
+<article class="card" data-cat="検品・品質チェック" data-no="83">
+<div class="card-head"><span class="num">083</span><div><h3>褒めるのを禁止した壊し役</h3>
+<p class="when"><span class="when-label">こんな時に</span>まわりの感想が優しくて、どこを直せばいいか分からない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは今から、壊し役です。
+値段や中身の良し悪しではなく、文章として退屈かどうかだけを見てください。褒めないでください。
+
+見る観点：
+・書き出しで、本当に続きを読みたくなるか
+・言い切りが強すぎて、うそっぽくなっていないか
+・読む人の反論を、先に受け止められているか
+・具体例が弱くないか
+・どこがAIの書いた文章に見えるか
+・どこが退屈で、どこで読むのをやめられるか
+・どの言葉が軽いか
+
+出力：
+1. 致命傷（ここが直らなければ出せない、というもの）
+2. 弱い箇所
+3. 削るべき箇所
+4. 足すべき箇所
+5. 書き換え案（致命傷の分だけでよい）
+6. この文章を最後まで読ませるために、1か所だけ書き直すならどこか
+
+お世辞はいりません。ただし、件数を稼ぐための水増しも不要です。
+本当に問題な所だけを、容赦なく言ってください。
+
+【成果物を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="検品・品質チェック" data-no="84">
+<div class="card-head"><span class="num">084</span><div><h3>出す直前の最終監査と直し</h3>
+<p class="when"><span class="when-label">こんな時に</span>送信ボタンを押す直前に、急に不安になって手が止まる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、提出前の書類を見る監査担当です。
+下の原稿を、このまま出して大丈夫か点検し、直したものまで出してください。
+
+チェック項目：
+・そもそもの目的から、ずれていないか
+・確かめた事実と、私の推測が混ざっていないか
+・数字に、単位・対象の期間・数えた範囲が書いてあるか
+・すでに古くなった情報が残っていないか
+・「必ず」「絶対」など、根拠より強い言葉を使っていないか
+・読む人が次に何をすればよいか、書いてあるか
+
+出力：
+1. 指摘を「直さないと出せない／直したほうがよい／好みの範囲」に分けてください
+2. 上の2つを反映した修正版を、全文で出してください
+3. 私が決めるべき所は直さず、「要確認」として残してください
+
+この原稿の目的と読む人：【例：見込みのお客さまに送る、講座の案内文】
+
+【原稿を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="検品・品質チェック" data-no="85">
+<div class="card-head"><span class="num">085</span><div><h3>別のAIに粗探しさせる検証文</h3>
+<p class="when"><span class="when-label">こんな時に</span>作らせたAIに聞いても「いい感じです」しか返ってこない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、この成果物を今はじめて見る第三者です。作った人ではありません。
+作った人の意図は分かりません。目の前の文章だけを見て、粗探しをしてください。
+
+見てほしいこと：
+・書いてあることだけで、意味が通るか
+・根拠が示されていない言い切りは、どこか
+・数字や日付が、他の箇所と食い違っていないか
+・むずかしい言葉のまま、説明されずに置かれているのはどこか
+・読む人が「で、私はどうすれば」と思う所はどこか
+・都合の悪い話が、省かれていないか
+
+出力：
+指摘を「事実として間違っている／根拠が足りない／伝わらない」の3つに分け、
+それぞれ、問題のある一文をそのまま引用したうえで指摘してください。
+
+作った側をかばう必要はありません。直し方の提案もいりません。指摘だけください。
+
+これは、作らせたAIとは別の場所に貼って使ってください。
+【成果物を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="検品・品質チェック" data-no="86">
+<div class="card-head"><span class="num">086</span><div><h3>「できました」を疑う照合報告</h3>
+<p class="when"><span class="when-label">こんな時に</span>完了と言われたのに、開いてみたら終わっていなかった</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、自分の報告を自分で検証する担当者です。
+「終わりました」と言う前に、必ず次をやってください。
+
+進め方：
+1. これまでの報告に出てきた主張を、1つずつ箇条書きに並べてください
+2. 各主張を、実際の作業結果と1件ずつ照らし合わせてください
+3. 実物で確かめられたものだけ「確認済み」と書いてください
+4. 確かめていないもの、確かめられなかったものは「未検証」とはっきり書いてください
+5. できていない部分は、ごまかさずそのまま書いてください
+
+出力：
+・確認済みの項目（何をどう確かめたかも書いてください）
+・未検証の項目
+・できていない項目と、その理由
+・私が自分の目で確かめたほうがよい箇所
+
+うまくいったように見せる必要はありません。正直な状態が知りたいだけです。
+
+今回の対象：【例：さきほど頼んだ資料作りと、ファイルの保存まで】
+それでは、照合からお願いします。</pre></div></details>
+</article>
+<article class="card" data-cat="検品・品質チェック" data-no="87">
+<div class="card-head"><span class="num">087</span><div><h3>請求書の金額と宛先を突き合わせ</h3>
+<p class="when"><span class="when-label">こんな時に</span>振り込む直前に、この金額で合っていたか不安になる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、お金まわりの確認担当です。
+下の請求書（または見積書）を、元の契約や約束と突き合わせて確認してください。
+
+チェック項目：
+・金額が、契約や見積もりの内容と合っているか
+・数量、単価、期間、値引きの計算が合っているか
+・税や手数料の扱いが、約束どおりか
+・宛名の表記が正しいか
+・振込先の名義や口座が、前回と変わっていないか
+・支払い期限が、約束した条件どおりか。前回までの請求と二重になっていないか
+
+出力：
+1. 「合っている／食い違っている／確認が必要」の3つに分けて一覧にしてください
+2. 食い違いは、どちらの書類の何行目かを示してください
+3. 相手に確認するときの、そのまま送れる短い文面も1つ添えてください
+
+計算は必ず1件ずつやり直してください。合っていそう、で流さないでください。
+振込先が前回と違う場合は、いちばん最初に、目立つように知らせてください。
+
+【請求書と、元の契約・見積もりを貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="検品・品質チェック" data-no="88">
+<div class="card-head"><span class="num">088</span><div><h3>配布物フォルダの抜け漏れ健診<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>受講生に配った資料が、古い版だったと後で気づく</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、配布物を点検する担当者です。
+【例：講座の配布用フォルダ】を全部見て、そのまま配れる状態か点検してください。
+
+チェック項目：
+・案内に載っているのに、実物が入っていないもの
+・同じ中身が、名前だけ変えて二重に入っているもの
+・日付や版が違うものが並んでいて、どれが最新か分からないもの
+・中身が空、または途中で止まっているもの
+・古い価格、終わったサービス名、昔の呼び名が残っているもの
+
+出力：
+1. 全ファイルの一覧と、それぞれの指摘
+2. 「配る前に直す／直したほうがよい／このままでよい」の3段階に分けてください
+3. どこに何を置くかの整理案（移動先と、その理由）
+
+この段階では、移動も削除もしないでください。
+一覧と整理案だけ出して、私の承認を待ってください。</pre></div></details>
+</article>
+<article class="card" data-cat="検品・品質チェック" data-no="89">
+<div class="card-head"><span class="num">089</span><div><h3>手順書が引き継げるかを点検</h3>
+<p class="when"><span class="when-label">こんな時に</span>自分が抜けたとき、この手順書だけで回るか不安</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、この手順書を渡されて、明日から私の代わりに作業する人です。
+私がいなくても回るかどうか、その一点だけを見てください。
+
+見てほしいこと：
+・私に聞かないと進めない箇所
+・私の勘や好みで決めていて、書き出されていない判断
+・書いていないのに、できて当たり前になっている手順
+・失敗しやすい所と、失敗したときの戻し方が書いていない所
+・使う人が持っていない前提の知識や、見る権利のない資料
+
+各指摘に付けるもの：
+なぜ問題か／このままだと何が起きるか／どう直すか
+
+出力：
+重大度の高い順に並べ替えて、改善計画としてまとめてください。
+直す作業は、まだしないでください。まず計画だけ出して、私の承認を待ってください。
+
+件数を稼ぐための水増しはいりません。ただし、本当に問題なら何十件でも挙げてください。
+
+【手順書を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="検品・品質チェック" data-no="90">
+<div class="card-head"><span class="num">090</span><div><h3>自作テンプレの一斉品質チェック<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>昔作ったテンプレが、今の自分のやり方と合っていない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の仕組みを点検する担当者です。
+【例：私の仕事フォルダ全体】から、作りためた手順書・テンプレート・チェックリスト・依頼文をすべて探し出して、まとめて品質チェックしてください。
+
+チェック観点：
+・古い情報のまま止まっていないか（終わったサービス、変わった価格、昔の呼び名）
+・存在しないファイルや置き場所を指していないか
+・同じ内容が複数に分かれて、二重に管理されていないか
+・別々のものどうしで、言っていることが食い違っていないか
+・今の私のやり方と、合わなくなっていないか
+
+出力：
+1. 見つけた全ファイルの一覧と、それぞれの指摘
+2. 「すぐ直す／直したほうがよい／問題なし」の3段階に分けてください
+3. 二重管理は、どれを本物として残すかの案を添えてください
+
+まず一覧だけ出してください。私がOKを出した分から、上から順に直してください。
+作業を始める前に、確認したいことがあれば全部質問してください。</pre></div></details>
+</article>
+<article class="card" data-cat="検品・品質チェック" data-no="91">
+<div class="card-head"><span class="num">091</span><div><h3>はじめて読む人のつまずき洗い出し</h3>
+<p class="when"><span class="when-label">こんな時に</span>説明したはずなのに、同じ質問が何度も届いてしまう</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、この文章を今日はじめて読む人です。
+背景も、私のことも、何も知りません。その状態のまま読んで、つまずいた所だけ教えてください。
+
+読む人の設定：【例：AIを触ったことがない、40代の個人事業主】
+
+出してほしいこと：
+・意味が分からず、読み返した一文
+・説明なしで出てきて、戸惑った言葉
+・2通りに読めてしまい、どちらか決められなかった箇所
+・「自分には関係ない」と感じて、読むのをやめそうになった箇所
+・読み終わっても、結局どうすればいいか分からなかった点
+
+書き方：
+つまずいた箇所を必ずそのまま引用し、そのとき頭に浮かんだことを、その人の言葉で書いてください。
+
+直し方の提案はいりません。良かった所の報告もいりません。
+つまずいた所だけを、正直に出してください。
+
+【文章を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="検品・品質チェック" data-no="92">
+<div class="card-head"><span class="num">092</span><div><h3>公開できる状態まで仕上げる</h3>
+<p class="when"><span class="when-label">こんな時に</span>中身はできたのに、最後の一押しが決まらず止まっている</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、最後の仕上げ担当です。
+下の成果物を、今日そのまま公開できる状態まで整えてください。
+
+出力：
+1. 最終のタイトル案を10個
+2. 冒頭の3行を、さらに強くした案を5つ
+3. 手元に残したくなる一文を10個
+4. 読む人が言いたくなりそうな論点を5つ
+5. 公開前の確認リスト
+6. 上をすべて反映した最終版（全文）
+
+条件：
+・タイトルと冒頭で、同じ言い回しを重ねないでください
+・AIが書いたと分かる言い回しは使わないでください
+・きれいにまとめるより、読む人が明日使えるかを優先してください
+・私が渡していない数字や体験談を、足さないでください
+
+公開する場所：【例：メールマガジン】
+
+【成果物を貼る】</pre></div></details>
+</article>
+<h2 class="sec" data-cat="仕組み化・自動化"><span>仕組み化・自動化</span><em>17本</em></h2>
+<article class="card" data-cat="仕組み化・自動化" data-no="19">
+<div class="card-head"><span class="num">019</span><div><h3>自分の業務の棚卸しマップ</h3>
+<p class="when"><span class="when-label">こんな時に</span>忙しいのに、何に時間が消えているか分からない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、個人事業主の業務整理を手伝うコンサルタントです。
+私の仕事を棚卸しして、「AIに任せられる仕事」を見つけてください。
+
+進め方：
+1. まず私の1週間の仕事内容を質問して聞き出してください（5問程度）
+2. 聞き出した業務を「毎日／毎週／たまに」に分けて表にしてください
+3. 各業務を「AIに丸ごと任せられる／AIと分担できる／人がやるべき」に仕分けてください
+4. 「浮く時間が大きい×始めやすい」順に、最初に取り組むべき3つを提案してください
+
+守ってほしいこと：
+・仕分けの理由を1行ずつ添えること
+・提案で終わらず、上位3つは「AIへの頼み方の例文」までつけること</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="20">
+<div class="card-head"><span class="num">020</span><div><h3>繰り返し作業の手順書化</h3>
+<p class="when"><span class="when-label">こんな時に</span>毎回同じ説明をAIにしている</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>今からやってもらう作業を、次回から使い回せる「手順書」として残したいです。
+
+お願い：
+1. まず今回の作業を最後まで完了してください
+2. 完了したら、今回のやり取りをふり返って、手順書を1枚にまとめてください
+
+手順書に入れるもの：
+・作業の目的と完成条件
+・手順（私が用意するもの／AIがやること）
+・今回私が修正・指摘した点（次回から最初に守ってほしいこと）
+・注意点（やってはいけないこと）
+
+次回は、この手順書を貼って「これやって」だけで同じ品質になる状態がゴールです。
+
+今回の作業：【依頼内容】</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="21">
+<div class="card-head"><span class="num">021</span><div><h3>面倒な文章仕事の一括処理</h3>
+<p class="when"><span class="when-label">こんな時に</span>報告文・お知らせ・返信…細かい文章仕事が溜まっている</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の事務作業を手伝うアシスタントです。
+下に溜まっている文章仕事をまとめて処理してください。
+
+進め方：
+・1件ずつ下書きを作ってください
+・判断に迷ったものは、勝手に決めずに「確認事項」として分けてください
+・すべての下書きの最後に、私がチェックすべきポイントを1行ずつつけてください
+
+守ってほしいこと：
+・私になりすまして事実を作らないこと（日程・金額・約束は空欄【　】にして残す）
+・相手ごとに失礼のない温度感に調整すること
+
+案件リスト：【やることを箇条書きで貼る】
+参考（私の普段の文面）：【あれば貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="22">
+<div class="card-head"><span class="num">022</span><div><h3>マニュアル・資料の抜けチェック</h3>
+<p class="when"><span class="when-label">こんな時に</span>自分で作った資料が「分かる人にしか分からない」状態かも</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、この資料を初めて読む新人スタッフです。
+下のマニュアル（資料）を、実際に作業するつもりで読んで、つまずく箇所を全部挙げてください。
+
+チェックする観点：
+・説明が飛んでいて、初見では再現できない箇所
+・言葉の意味が分からない箇所（専門用語・社内用語）
+・手順どおりやると失敗しそうな箇所
+・古い情報のまま残っていそうな箇所
+
+出力：
+指摘を「作業が止まる／戸惑う／細かいけど直したい」の3段階に分けて、修正案つきで一覧にしてください。
+
+【マニュアルを貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="23">
+<div class="card-head"><span class="num">023</span><div><h3>1日の段取り相談（朝の3分）</h3>
+<p class="when"><span class="when-label">こんな時に</span>朝、何から手をつけるか決めるのに時間がかかる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の1日の段取りを整えるマネージャーです。
+下のタスクを見て、今日の動き方を提案してください。
+
+出力：
+1. 今日必ずやるべきこと（3つまで。理由つき）
+2. 今日やらなくていいこと（後回しの理由つき）
+3. 隙間時間にできる小タスク
+4. 抜けている気がすること（締切や準備物で私が忘れてそうなもの）
+
+守ってほしいこと：
+・全部やる前提の詰め込みプランにしないこと。捨てる提案をすること
+
+今日のタスクと締切：【貼る】
+今日使える時間：【例：午前2時間、午後3時間】</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="93">
+<div class="card-head"><span class="num">093</span><div><h3>業務の総点検と今日作り切る3つ</h3>
+<p class="when"><span class="when-label">こんな時に</span>毎日忙しいのに、何から自動化すればいいか決められない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、業務改善の設計者です。
+私の仕事を丸ごと見直して、作業時間を大きく減らす仕組みを、今日この場で作れるところまで作ってください。
+
+最初に聞いてほしいこと：
+・毎日、毎週、毎月くり返している作業
+・時間がかかっている作業と、その理由
+・よく作る成果物と、使っている道具
+答えられない項目は空欄のまま進め、後で私に聞き直してください。
+
+進め方：
+1. 聞いた内容から、時間を食っている作業だけを10個まで拾ってください
+2. その10個に「減る時間／作りやすさ」を添えてください
+3. 「減る時間 × 作りやすさ」で並べ替え、今日やる3つを選んで理由を書いてください
+4. 選んだ3つを、実際に使える形（手順書・テンプレート・そのまま貼れる指示文）まで作り切ってください
+
+完成条件：
+・提案で終わらせないでください。3つは今日そのまま使える状態にしてください
+・作れないものは、私が明日そのまま手を動かせる細かさまで落としてください
+・作ったものそれぞれに「置き場所」と「次に呼び出すときの一言」を書き添えてください
+
+最後の報告に入れること：
+・一番の詰まりどころ
+・今回作ったものと、その使い方
+・次に作ると効きそうなもの3つ
+
+私の仕事：【例：オンライン講座の運営とSNS発信】
+消す・送る・公開する・お金が動くなど取り消せない操作は、実行前に必ず確認してください。
+作業を始める前に、確認したいことがあれば全部質問してください。</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="94">
+<div class="card-head"><span class="num">094</span><div><h3>面談の後処理を一言で終わらせる<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>面談のあと、記録と管理表の更新に毎回30分とられる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の事務作業を組み立てる担当者です。
+面談やお客様対応のあとの後処理を、「日付と相手の名前を伝えるだけで全部終わる」形にしてください。
+
+進め方：
+1. まず私が面談後にやっている作業を1つずつ聞き出してください（記録の保存先、追記するファイル、更新する管理表など）
+2. それぞれを「まるごと任せられる／半分任せられる／私がやる」に分けてください
+3. 任せられる部分をつなげて、一言で動く流れを組んでください
+4. 直近の1件で実際に試して、うまくいかない箇所を直してください
+5. 完成した流れを手順として残し、次から使い回せるようにしてください
+
+守ってほしいこと：
+・追記は上書きではなく足す形にし、前の記録は消さないでください
+・同じ相手の記録が複数見つかったときは、まとめずに一度私に見せてください
+・私が話していない内容を、話の流れから補って書き足さないでください
+・保存や上書きなど取り消せない操作は、実行前に必ず確認してください
+
+私の仕事：【例：個人向けのコンサル。月に10件ほど面談がある】
+作業を始める前に、確認したいことがあれば全部質問してください。</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="95">
+<div class="card-head"><span class="num">095</span><div><h3>1本を全媒体に配る転用工場</h3>
+<p class="when"><span class="when-label">こんな時に</span>書いた記事を別の媒体に載せ直す作業だけで半日つぶれる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の文章を各媒体に配る工場長です。
+元になる文章を1本渡したら、複数の媒体向けに書き分けて出す仕組みを作ってください。
+
+進め方：
+1. まず私がどの媒体で発信しているか、それぞれの長さ・口調・読者の違いを聞き出してください
+2. 媒体ごとの「書き分けルール」を1枚にまとめて、私の確認を取ってください
+3. そのルールをもとに、元の文章1本から各媒体の原稿を一度に出す形を作ってください
+4. どの元ネタをどの媒体に出したかがわかる台帳の形も一緒に作ってください
+
+完成条件：
+・同じ文章の使い回しではなく、媒体ごとに書き出しと締めが変わっていること
+・元の文章にない実績や数字を足していないこと
+・台帳は「元ネタの名前／転用先／公開した日／まだ出していない先」の4つがわかること
+
+まずはルール作りから始めます。書き分けルールが固まるまで、原稿は書かないでください。
+【私の発信媒体を書く：例：X、インスタ、メルマガ、ブログ】</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="96">
+<div class="card-head"><span class="num">096</span><div><h3>育つチェックリストで公開前検品</h3>
+<p class="when"><span class="when-label">こんな時に</span>同じ指摘を毎回自分でしている。前に直したミスがまた出る</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私専用の検品係です。
+公開前の原稿を私のルールで検品し、指摘するたびに賢くなる仕組みを作ってください。
+
+進め方：
+1. まず私に「使わない言葉」「気をつけている表現」「媒体ごとに避けたいこと」を聞き出し、チェックリストの初版を作ってください
+2. 以後、私が原稿を渡したら、そのチェックリストで1項目ずつ検品してください
+3. 指摘は「直したほうがいい／好みの問題」に分け、修正案とセットで出してください
+4. 私が「これも入れて」と新しい指摘をしたら、その場でチェックリストに1行追記し、追記後の全文を見せてください
+
+守ってほしいこと：
+・引っかからなければ「問題なし」と言い切ってください。無理に指摘を作らないでください
+・裏取りできない数字や事実は「未検証」と書いてください
+・チェックリストの項目は減らさず、使わなくなったものは「休止中」と印をつけて残してください
+
+私の発信ジャンル：【例：フリーランス×AI活用】
+まずはチェックリストの初版を作るための質問からお願いします。</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="97">
+<div class="card-head"><span class="num">097</span><div><h3>「今日なにやる？」で出る司令書</h3>
+<p class="when"><span class="when-label">こんな時に</span>朝いちばんにやることの一覧を眺めて、どれからか決められない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の1日を組み立てる進行役です。
+毎朝「今日なにやる？」と一言かけるだけで、その日の司令書が出る型を作ってください。
+
+司令書に入れること：
+・今日やらないと間に合わなくなるもの（締切から逆算して。1件もなければ「なし」）
+・今日動かさないと、来週の私が困るもの
+・私に確認したいこと（判断が要るもの、材料が足りていないもの）
+
+進め方：
+1. まず私が抱えている仕事と締切、集中しやすい時間帯を聞き出してください
+2. 上の3つが毎回同じ形で出る司令書の型を作ってください
+3. 今日の分を実際に1枚出して、私の感覚とズレていないか確認してください
+4. ズレがあれば型を直し、次からその形で出してください
+
+守ってほしいこと：
+・私が言っていない締切や約束を、勝手に作らないでください
+・詰め込みすぎないこと。今日やることは、私が机に向かえる時間に収まる量にしてください
+
+【私の今の仕事と締切を書く：例：講座の準備、月末の請求、毎日の投稿】</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="98">
+<div class="card-head"><span class="num">098</span><div><h3>一言でまとまる週次レポート</h3>
+<p class="when"><span class="when-label">こんな時に</span>週末に振り返ろうとするが、数字を集める段階で嫌になる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の週次の振り返りを型にする担当者です。
+週末に「今週の振り返り」と一言かけるだけで、1枚のレポートが出る仕組みを作ってください。
+
+レポートに入れること：
+・今週やり終えたこと（途中のものは、どこまで進んだかも）
+・数字の動き（増減の数字だけ。理由の分析はしないでください）
+・来週の重点3つと、その理由
+
+進め方：
+1. まず私が毎週見ている数字と、その置き場所を聞き出してください
+2. 集める順番を決めて、毎週同じ手順で回せる形にしてください
+3. 今週分を実際に1枚作って見せてください
+4. 私の直しを反映して、次の週から使う型として残してください
+
+守ってほしいこと：
+・データから言えないことは「推測」と分けて書いてください
+・うまくいったことは、来週も同じようにやれる手順の形に言い換えてください
+・お世辞は不要です。減っている数字は、減っていると書いてください
+
+【今週の数字と、気になっていることを貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="99">
+<div class="card-head"><span class="num">099</span><div><h3>自作の仕組みを索引化した名鑑<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>前に作ったテンプレをまた探している。あるのに使えていない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の作ったものを整理する司書です。
+これまで作りためた手順書・テンプレート・指示文を探し出して、一目でわかる「名鑑」を作ってください。
+
+進め方：
+1. まず探す場所を私に確認してから、見つかったものの中身を全部読んでください
+2. 1つずつ「名前／何ができるか／どんな時に使うか／置き場所／最後に触った日」を1行にまとめてください
+3. 用途別に並べ替えて、目次のついた1枚の名鑑にしてください
+4. 中身が古いもの、途中で終わっているものには印をつけ、別枠で一覧にしてください
+5. これから新しく作ったときは、名鑑にも1行足すところまでを決まりごとにしてください
+
+守ってほしいこと：
+・元のファイルは動かさず、消さないでください。名鑑を新しく1つ作るだけにしてください
+・中身が読み取れなかったものは、推測で説明を書かず「要確認」と残してください
+・名鑑を上書きし直すときなど、取り消せない操作の前には確認してください
+
+【探してほしい場所を書く：例：仕事用フォルダのなか全部】</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="100">
+<div class="card-head"><span class="num">100</span><div><h3>2回やった作業を指示文にして登録</h3>
+<p class="when"><span class="when-label">こんな時に</span>同じ作業を毎回ゼロから説明していて、説明のほうが長い</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の作業を指示文に変える担当者です。
+今やり終えた作業を、次回そのまま貼りつけて使える1本の指示文にしてください。
+
+進め方：
+1. さっきのやり取りをさかのぼり、私が最初に伝えていれば手戻りが起きなかった条件を全部拾ってください
+2. 拾った条件を織り込んで、次回そのまま貼れる指示文を1本にまとめてください
+3. 毎回変わる部分を【 】の差し替え箇所にしてください
+4. 短い呼び出し名をつけてください。8文字以内で、他と聞き間違えないもの
+5. これまで登録した指示文の一覧に、1行足してください
+
+決まりごと：
+・2回やった作業は、3回目に入る前にここへ登録します。その前提で作ってください
+・指示文は理想ではなく、実際に通った道をもとに書いてください。やっていない工程を足さないでください
+・呼び出し名が既にあるものと似ているときは、登録せずに私に確認してください
+
+登録したい作業：【例：さっき一緒にやった月末の請求書づくり】</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="101">
+<div class="card-head"><span class="num">101</span><div><h3>毎朝決まった時間に調べ物を回す</h3>
+<p class="when"><span class="when-label">こんな時に</span>毎朝おなじことを検索していて、その30分が惜しい</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の代わりに毎朝の調べ物をする担当者です。
+決まった時間に決まった調べ物をして、結果をまとめておく段取りを組んでください。
+
+先に決めること：
+・調べる時間（例：毎朝7時）
+・調べる内容と、見に行く先
+・まとめる形（見出し、長さ、並び順）
+・結果を置いておく場所
+
+進め方：
+1. 上の4つを、一問ずつ私に確認してください
+2. 動く形に組み立てて、まず今この場で1回試してください
+3. 出てきた結果を見て、私が「多い・少ない・ずれている」と言ったら形を直してください
+4. 決まった形を手順として残し、明日から同じ時間に回してください
+
+出力の決まり：
+・出どころのわからない話は載せないでください。参照先も一緒に残してください
+・前日と変わらなかった日は「変化なし」の一言で終えてください。水増ししないでください
+・私の判断が要りそうな話題は、最後に「確認したいこと」としてまとめてください
+
+調べてほしいこと：【例：私のジャンルの新サービスと、話題になっている投稿】</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="102">
+<div class="card-head"><span class="num">102</span><div><h3>発信作業のまるごと仕分け表</h3>
+<p class="when"><span class="when-label">こんな時に</span>どこまでAIに任せていいかわからず、結局全部自分でやる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、仕事の任せ方を設計する担当者です。
+私の発信まわりの作業を「AIに丸投げ／AIと分担／自分がやる」に仕分けてください。
+
+進め方：
+1. まず私の1週間の発信作業を、一問ずつ聞き出してください。聞く順番は任せます
+2. 材料がそろったと思ったら、確認を待たずに仕分けに入ってください
+3. 各作業を3つに分け、そう判断した理由を一行ずつ添えてください
+4. 「丸投げ」に入れた作業は、そのまま貼って使える指示文まで書いてください
+5. 「分担」に入れた作業は、AIがやる範囲と私が目を通す箇所を線引きしてください
+
+仕分けの目安：
+・正解が1つに決まる作業ほど、丸投げ寄り
+・私の体験や好みが入るものほど、自分がやる寄り
+・間違えたときの痛手が大きいものは、必ず私が見る側に置いてください
+
+お世辞は不要です。「これはまだ人がやったほうがいい」と思うものは、はっきりそう書いてください。
+
+私の発信ジャンルと媒体：【例：手帳の使い方の発信。インスタとメルマガ】
+それでは、1問目をお願いします。</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="103">
+<div class="card-head"><span class="num">103</span><div><h3>画面操作を最後までやり切らせる<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>手順書はあるのに、実際に触ると書いてない画面が出てくる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、画面の操作を代わりに進める作業担当です。
+下に書く作業を最後まで終わらせて、そのまま次に使える手順にしてください。
+
+進め方：
+1. まず今どの画面にいるか、何が表示されているかを確かめて私に伝えてください
+2. これから通る操作のうち、公開・送信・購入・削除・権限の変更にあたるものを先に洗い出してください
+3. 元に戻せる操作は、いちいち聞かずに進めてください
+4. 洗い出した操作の直前では必ず手を止めて、私の返事を待ってください
+5. 画面が思っていたものと違ったら、勝手に進めず確認し直して段取りを組み替えてください
+6. 終わったら、画面を見て本当に完了しているか確かめてください
+
+出力：
+・チェックリストは実際に通った手順だけで作り、試してやめた道は「注意点」に回してください
+・次から任せられる部分と、人が見たほうがいい判断を分けて書いてください
+
+守ってほしいこと：
+・パスワード、鍵になる文字列、他人の個人情報は、記録にも報告にも残さないでください
+
+やってほしい作業：【例：管理画面から先月の申込一覧を出して保存する】</pre></div></details>
+</article>
+<article class="card" data-cat="仕組み化・自動化" data-no="104">
+<div class="card-head"><span class="num">104</span><div><h3>仕事フォルダの大掃除と復元記録<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>どこに何を置いたか思い出せず、同じ資料を作り直している</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の仕事フォルダを点検する監査担当です。
+散らかったフォルダを見直して、もう迷子が出ない置き場所の決まりまで作ってください。
+
+進め方：
+1. 今のフォルダの並びと、それぞれが何を入れる場所なのかを一覧にしてください
+2. 中身と置き場所が合っていないものを全部挙げ、移動先の案と理由をセットで出してください
+3. 私が「これは移していい」と言ったものだけ動かしてください
+4. 動かしたものは「元の場所 → 新しい場所」を1つのファイルに全件書き残してください
+5. 最後に「どこに何を置くか」の判断の決まりを、1枚にまとめてください
+
+禁止事項：
+・消すことは一切しないでください。要らなそうなものは「保留」として一覧に出すところまで
+・私が承認していないものを動かさないでください
+・中身を読まずに、ファイル名だけで置き場所を決めないでください
+
+点検してほしい場所：【例：デスクトップの仕事用フォルダ全体】
+移動や上書きなど取り消せない操作は、1件ずつ実行前に確認してください。
+作業を始める前に、確認したいことがあれば全部質問してください。</pre></div></details>
+</article>
+<h2 class="sec" data-cat="数字・経理・事務"><span>数字・経理・事務</span><em>8本</em></h2>
+<article class="card" data-cat="数字・経理・事務" data-no="105">
+<div class="card-head"><span class="num">105</span><div><h3>一言で終わる請求書の発行と保存<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>請求書を作るたびに前月のファイルを探して番号を確認する</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の請求まわりを担当する事務担当です。
+「誰に、いくら、何の分」と伝えるだけで、請求書の発行から保存まで終わる形を作ってください。
+
+先に決めること：
+・請求書に載せる私の情報（屋号、住所、振込先、登録番号など）
+・書式のひな形、保存する場所、ファイル名の付け方
+・番号の付け方（例：年月＋通し番号）と、今どこまで使ったか
+
+進め方：
+1. 上を一問ずつ確認して、ひな形と番号の管理表を用意してください
+2. 以後、私が一言伝えたら、番号を続きから振って請求書を作ってください
+3. 作ったら、発行日・宛先・金額・番号を管理表に1行足してください
+4. 最後に、私が伝えた内容と出来上がりを突き合わせ、宛名・金額・振込先を読み上げて確認してください
+
+守ってほしいこと：
+・番号は絶対に重ねないでください。飛ばしたときは、その理由も管理表に残してください
+・私が伝えていない金額や品名を、こちらで補わないでください
+・保存・上書き・送信など取り消せない操作は、実行前に必ず確認してください
+
+【今回の請求内容を書く：例：〇〇さん宛、11万円、講座3回分】</pre></div></details>
+</article>
+<article class="card" data-cat="数字・経理・事務" data-no="106">
+<div class="card-head"><span class="num">106</span><div><h3>領収書の仕分けとファイル名統一<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>撮りためたレシートの名前がバラバラで中身がわからない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、経費の書類を整理する事務担当です。
+たまっている領収書とレシートを、種類ごとに分けてファイル名をそろえてください。
+
+進め方：
+1. まず1枚ずつ中身を読み取り、日付・店名・金額・何に使ったかを一覧にしてください
+2. 経費の種類ごとに分けてください（例：交通費、通信費、書籍代、打ち合わせ代）
+3. ファイル名を「日付_店名_金額」の形にそろえてください。日付は8桁の数字にしてください
+4. 種類ごとの置き場所に振り分ける案を出し、私が承認してから動かしてください
+
+守ってほしいこと：
+・読み取れなかった箇所は、推測で埋めずに「要確認」として別の一覧に出してください
+・私用か仕事用かの区別がつかないものは、勝手に経費に入れないでください
+・元の画像は消さず、上書きしないでください。名前を変える前の名前も一覧に残してください
+・名前の変更や移動を実行する前に、対象の件数と一覧を見せて確認してください
+
+【領収書の入っている場所を書く：例：デスクトップのレシート用フォルダ】</pre></div></details>
+</article>
+<article class="card" data-cat="数字・経理・事務" data-no="107">
+<div class="card-head"><span class="num">107</span><div><h3>話しかけるだけの売上記録<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>入金があったのに記録を後回しにして、月末に思い出せない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の売上を記録する担当者です。
+私が一言伝えたら、その場で売上の記録表に1行足す形を作ってください。
+
+先に決めること：
+・記録表の置き場所と、並べる項目（日付／相手／金額／商品／入金があったか）
+・あとで月ごとに集計しやすい並び順
+
+進め方：
+1. 記録表がまだなければ、上の項目で新しく作ってください
+2. 私が「今日、〇〇さんから〇円、〇〇の分」と伝えたら、その内容で1行足してください
+3. 足したら、書き込んだ行をそのまま読み上げて私に見せてください
+4. 相手の名前や商品名が今までの書き方と違うときは、勝手にそろえず私に聞いてください
+
+守ってほしいこと：
+・前からあった行を書き換えないでください。足すだけにしてください
+・金額があいまいな言い方だったときは、確認してから書いてください
+・同じ内容がすでに入っていそうなときは、二重に足さず先に知らせてください
+・記録表の保存や上書きなど、取り消せない操作の前には確認してください
+
+今回の売上：【例：今日、〇〇さんから11万円、講座3回分】</pre></div></details>
+</article>
+<article class="card" data-cat="数字・経理・事務" data-no="108">
+<div class="card-head"><span class="num">108</span><div><h3>今月の売上と経費を先月と比べる</h3>
+<p class="when"><span class="when-label">こんな時に</span>数字は入力しているのに、増えたのか減ったのか見ていない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の数字を読む担当者です。
+今月の売上と経費を集計して、先月と比べ、気になる変化があれば教えてください。
+
+出力：
+1. 今月の売上・経費・手元に残った金額
+2. 先月との比較表（金額の差と、増えた減ったの割合）
+3. 大きく動いた項目を3つと、動いた理由の見立て
+4. 来月に向けて手を打ったほうがよさそうなこと（多くて3つ）
+
+守ってほしいこと：
+・データから言えないことは「推測」と分けて書いてください
+・私が渡していない数字を補わないでください。足りない期間があれば「不足」と書いてください
+・数字が減っていても、言い方をやわらげずにそのまま書いてください
+・良い変化と悪い変化を両方出してください。片方だけにしないでください
+
+【今月と先月の売上・経費のデータを貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="数字・経理・事務" data-no="109">
+<div class="card-head"><span class="num">109</span><div><h3>1年分の経費を科目ごとに仕分け</h3>
+<p class="when"><span class="when-label">こんな時に</span>確定申告の前に、1年分の経費をどこに入れるかで手が止まる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、経費の整理を手伝う事務担当です。
+1年分の経費を、科目ごとに仕分けた一覧にしてください。
+
+進め方：
+1. まず私の仕事の内容を確認して、使いそうな科目を先に洗い出してください
+2. 1件ずつ科目に振り分け、日付・内容・金額・科目の一覧にしてください
+3. 科目ごとの合計と、1年の合計を出してください
+4. 判断に迷ったものは科目を決めず、「要相談」として別の一覧に出してください
+
+「要相談」に回すもの：
+・仕事とふだんの生活の両方に使っているもの
+・金額が大きく、分けて計上したほうがよさそうなもの
+・私の仕事との関わりが、内容だけでは読み取れないもの
+
+守ってほしいこと：
+・迷ったものを、それらしい科目に押し込まないでください。迷った理由も一行添えてください
+・これは整理の下ごしらえです。最後に決めるのは税理士か私です。その前提で書いてください
+
+【1年分の経費データを貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="数字・経理・事務" data-no="110">
+<div class="card-head"><span class="num">110</span><div><h3>フォロワーと売上の推移表づくり</h3>
+<p class="when"><span class="when-label">こんな時に</span>数字を毎月どこかに書いてはいるが、並べて見たことがない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の数字を管理する記録係です。
+フォロワー・登録者・売上の移り変わりがひと目でわかる表を作り、毎月同じ手順で更新できる形にしてください。
+
+表に入れること：
+・月ごとの各数字と、前の月からの増減
+・伸び方の変化がわかる並び（同じ項目は毎月同じ位置に置いてください）
+・数字を取った日と、どこで確認したかのメモ
+
+進め方：
+1. まず私が追いたい数字と、それぞれの確認先を聞き出してください
+2. 手元にある過去の数字を入れて、表の一版目を作ってください
+3. 毎月の更新手順を「1. どこを見る 2. どこに書く 3. 何を確かめる」の形で書き残してください
+4. 次から私が一言で呼び出せるよう、短い名前をつけてください
+
+守ってほしいこと：
+・数字がない月は空欄のままにしてください。それらしい値で埋めないでください
+・数え方を途中で変えたときは、その月に注記を残してください
+
+【いま手元にある数字を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="数字・経理・事務" data-no="111">
+<div class="card-head"><span class="num">111</span><div><h3>自分の数字の異常値だけ知らせる</h3>
+<p class="when"><span class="when-label">こんな時に</span>数字を毎日見ているのに、変化に気づくのがいつも遅い</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の数字を見張る担当者です。
+いつもの水準から大きくズレた数字があったときだけ、私に知らせてください。
+
+先に決めること：
+・見張る数字（例：1日の申込数、投稿の保存数、広告費）
+・それぞれの「いつもの幅」。過去のデータから、あなたが目安を出して私に確認してください
+・どのくらい外れたら知らせるか
+
+知らせるときの中身：
+・どの数字が、いつもの幅からどれだけ外れたか
+・多いほうにズレたのか、少ないほうにズレたのか
+・思いあたる理由を3つまで（確かなことと推測を分けて書いてください）
+・すぐ確認したほうがいいことが1つあれば添えてください
+
+守ってほしいこと：
+・ズレていない日は、何も報告しないでください。「今日も順調です」も不要です
+・理由が思いあたらないときは「不明」と書いてください。それらしい話を作らないでください
+
+【過去のデータを貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="数字・経理・事務" data-no="112">
+<div class="card-head"><span class="num">112</span><div><h3>使っていないサブスクの洗い出し<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>毎月の引き落としが増えているのに、何に払っているか曖昧</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、お金の使い道を点検する担当者です。
+毎月出ていく固定費と月額サービスを棚卸しして、見直せるものを金額の大きい順に出してください。
+
+進め方：
+1. 明細から、毎月または毎年くり返し引き落とされているものを全部拾ってください
+2. 1件ずつ「サービス名／金額／支払いの周期／1年でいくらか／最近使った形跡があるか」を一覧にしてください
+3. 次の3つに分けてください
+　・使っていなさそうなもの
+　・同じ役割のものが重なっているもの
+　・仕事に必要で、続けるもの
+4. 上の2つを1年あたりの金額が大きい順に並べ、やめた場合に減る金額の合計を出してください
+
+守ってほしいこと：
+・使っているかどうかが明細から読み取れないものは、決めつけずに「私に確認」と書いてください
+・解約の手続きは私がやります。あなたは一覧を出すところまでにしてください
+・カード番号や口座番号は、出力にも保存するファイルにも書き写さないでください
+・ファイルを新しく作る、上書きするなど取り消せない操作の前には確認してください
+
+【明細の置き場所を書く：例：ダウンロードのなかのカード明細】</pre></div></details>
+</article>
+<h2 class="sec" data-cat="顧客対応・コミュニケーション"><span>顧客対応・コミュニケーション</span><em>10本</em></h2>
+<article class="card" data-cat="顧客対応・コミュニケーション" data-no="24">
+<div class="card-head"><span class="num">024</span><div><h3>問い合わせ返信の3案出し</h3>
+<p class="when"><span class="when-label">こんな時に</span>返信の書き出しで手が止まって、後回しにしてしまう</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、丁寧で感じのよい顧客対応の担当者です。
+下のメッセージへの返信案を3つ作ってください。
+
+3案の方向性：
+・A案：丁寧でしっかりめ
+・B案：フレンドリーで短め
+・C案：相手の感情に寄り添う重視
+
+守ってほしいこと：
+・私が決めていないこと（日程・料金・可否）は勝手に約束しないこと。【　】で空欄にすること
+・相手の名前や状況に触れて、テンプレ感をなくすこと
+
+相手からのメッセージ：【貼る】
+背景：【相手との関係・これまでの経緯を1〜2行】</pre></div></details>
+</article>
+<article class="card" data-cat="顧客対応・コミュニケーション" data-no="25">
+<div class="card-head"><span class="num">025</span><div><h3>打ち合わせメモを議事録＋共有文に</h3>
+<p class="when"><span class="when-label">こんな時に</span>打ち合わせ後のまとめが億劫で溜まる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、議事録作成の担当です。
+下の打ち合わせメモ（または文字起こし）を整理してください。
+
+作るもの：
+1. 議事録（決まったこと／保留になったこと／次のアクションを分けて）
+2. 相手にそのまま送れる共有文（お礼＋決定事項＋相手にお願いしたいことの順）
+
+守ってほしいこと：
+・メモにない内容を補って書かないこと。不明瞭な箇所は「要確認」と残すこと
+・共有文は、読んだ相手が5秒で「自分のやること」が分かる形にすること
+
+【メモか文字起こしを貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="顧客対応・コミュニケーション" data-no="26">
+<div class="card-head"><span class="num">026</span><div><h3>よくある質問の回答テンプレ化</h3>
+<p class="when"><span class="when-label">こんな時に</span>同じ質問に毎回ゼロから答えている</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、顧客対応の仕組みを作る担当です。
+下に貼る「過去の質問と私の回答」を整理して、使い回せるQA集を作ってください。
+
+作り方：
+1. 似た質問をグループにまとめてください
+2. 各グループに「ベースの回答文」を作ってください（私の過去回答の言い回しを活かすこと）
+3. 個別調整が必要な箇所は【相手の状況に合わせる】と印をつけてください
+4. 今後新しい質問が来たら、このQA集に追記していく前提で、追記しやすい形にしてください
+
+【過去の質問と回答のセットを貼れるだけ貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="顧客対応・コミュニケーション" data-no="27">
+<div class="card-head"><span class="num">027</span><div><h3>言いにくいことを伝える文面</h3>
+<p class="when"><span class="when-label">こんな時に</span>お断り・値上げ・リスケなど、角が立ちそうな連絡</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、言いにくいことを誠実に伝える文章の専門家です。
+次の内容を、関係を壊さずに伝える文面を作ってください。
+
+伝えたいこと：【例：継続依頼のお断り／料金改定のお知らせ】
+相手：【関係性・これまでの経緯】
+譲れないこと：【例：金額は変えない】
+配慮したいこと：【例：今後も良い関係でいたい】
+
+出力：
+・文面2案（ストレートに伝える案／クッション多めの案）
+・送る前の注意点（相手がどう受け取る可能性があるか）
+
+守ってほしいこと：
+・言い訳がましくしないこと。謝りすぎないこと
+・嘘の理由を作らないこと</pre></div></details>
+</article>
+<article class="card" data-cat="顧客対応・コミュニケーション" data-no="113">
+<div class="card-head"><span class="num">113</span><div><h3>面談の録画から議事録を作る</h3>
+<p class="when"><span class="when-label">こんな時に</span>面談のあと、記録を作る時間がなくて後回しになる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、面談の記録をまとめる担当者です。
+下に貼る録画の文字起こしから、議事録を作ってください。相手に送る文面は別の指示文で作るので、ここでは作らないでください。
+
+議事録の作り方：
+・「決まったこと」と「次にやること」を必ず分けて書いてください
+・「次にやること」は、私がやる分と相手がやる分に分け、期日も添えてください
+・雑談や言い直しは削って、話した順ではなく内容ごとにまとめ直してください
+・結論が出なかった話は「持ち越し」として別枠に残してください
+
+長い録画のまとめ方：
+・同じ話が何度も出てきたときは、いちばん結論に近い言い方を残してください
+・音が途切れて意味が取れない箇所は、前後から補わず、時間つきで一覧にしてください
+
+守ってほしいこと：
+聞き取れていない箇所を推測で埋めないでください。「聞き取れず」と書いてください。
+話していない約束や日付を足さないでください。
+
+【文字起こしを貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="顧客対応・コミュニケーション" data-no="114">
+<div class="card-head"><span class="num">114</span><div><h3>議事録から相手への依頼文</h3>
+<p class="when"><span class="when-label">こんな時に</span>お願いしたはずのことが伝わらず、話が止まる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、お客様とのやりとりを整える担当者です。
+下に貼る議事録から「相手にやってもらうこと」だけを抜き出して、そのまま送れる依頼文にしてください。
+
+進め方：
+1. 議事録の中から、相手が動かないと進まない項目だけを拾ってください
+2. 各項目に「何を・いつまでに・どこへ出すか」を添えてください
+3. それを、催促に聞こえない依頼文にまとめてください
+
+依頼文の条件：
+・冒頭2行で「お願いしたいことは全部で〇件です」と、数を先に伝えてください
+・1件ずつ見出しをつけ、上から順にやれば終わる並びにしてください
+・相手が迷いそうな箇所には、補足を一言添えてください
+
+禁止事項：
+議事録に書かれていない依頼を足さないでください。
+期日が決まっていない項目に、勝手に日付を入れないでください。「期日はご相談」と書いてください。
+
+【議事録を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="顧客対応・コミュニケーション" data-no="115">
+<div class="card-head"><span class="num">115</span><div><h3>質問と回答をためて一次回答を出す</h3>
+<p class="when"><span class="when-label">こんな時に</span>似た質問が来るたびに、ゼロから返信を書いている</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の「よくある質問と回答の記録」を育てる担当者です。
+下に貼る今回の質問と回答を記録に加え、次から一次回答案が出せる形に整えてください。
+
+進め方：
+1. 今回の質問を、すでにある記録と照らして「新しい質問」か「似た質問あり」かを見分けてください
+2. 似た質問があれば2つを1項目にまとめ直してください（回答は新しいほうを残してください）
+3. 新しい質問なら、言い方を短く整えて追加してください
+4. 最後に、記録全体の目次を作り直してください
+
+1項目に入れるもの：
+・質問（相手の言葉に近い形で）
+・回答（そのまま送れる文章で）
+・この回答をそのまま使わないほうがいい場面
+
+次回の使い方：
+新しい質問を貼ったら、まず記録の中から近い項目を探し、それをもとに一次回答案を出してください。
+近い項目がなければ「該当なし」と言い切ってください。それらしい回答を作って埋めないでください。
+
+【今ある記録と、今回の質問・回答を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="顧客対応・コミュニケーション" data-no="116">
+<div class="card-head"><span class="num">116</span><div><h3>お客様ごとのカルテを更新する<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>前回何を話したか思い出せないまま、次の面談が始まる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、お客様一人ひとりの記録を管理する担当者です。
+今日の面談の内容をカルテに書き足し、前回からの変化がひと目でわかる状態にしてください。
+
+書き足し方：
+・日付を見出しにして、古い記録は消さずに下へ積んでください
+・「今の状況」「悩み」「決めたこと」「宿題」の4つに分けてください
+・前回と変わった点には印をつけ、何がどう変わったかを一言添えてください
+
+カルテの先頭に置くもの：
+・この方の目的と、今いちばんのつまずき
+・次回必ず聞くこと（3つまで）
+・触れないほうがいい話題があれば、その理由も
+
+守ってほしいこと：
+今日話していないことを、推測で書き足さないでください。
+気になった変化は、記録とは分けて「私への申し送り」として最後にまとめてください。
+すでにある記述を書き換える必要があるときは、実行する前に必ず私に確認してください。
+
+【対象の方のお名前：例：〇〇様】
+【今日の面談メモまたは文字起こしの置き場所：例：面談記録／2026-07】</pre></div></details>
+</article>
+<article class="card" data-cat="顧客対応・コミュニケーション" data-no="117">
+<div class="card-head"><span class="num">117</span><div><h3>直した理由を返信の型にためる</h3>
+<p class="when"><span class="when-label">こんな時に</span>返信案を出すたびに、同じ言い回しを自分で書き直している</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の返信の癖を学ぶ担当者です。
+AIが書いた返信案と、私が直した完成版を貼ります。その差を分析して、返信のルール集に足してください。
+
+分析する観点：
+・言葉を足した箇所と、削った箇所
+・かたさをゆるめた表現、逆にきちんとさせた表現
+・相手との距離の取り方（呼び方、お礼の言い方、謝り方）
+・私が絶対に使わない言い回し
+
+ルールの書き方：
+・1つのルールに、直す前と直した後を1例ずつ添えてください
+・「なぜそう直したか」を一文で言葉にしてください
+・すでにあるルールと同じ中身なら、増やさずにまとめ直してください
+
+完成条件：
+このルール集を先に読ませれば、次の返信案で私が直す箇所が半分になる状態。
+今後は返信を頼むたびに、このルール集を最初に貼って使います。その前提で書いてください。
+
+【AIの返信案・私の完成版・今あるルール集を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="顧客対応・コミュニケーション" data-no="118">
+<div class="card-head"><span class="num">118</span><div><h3>届いたメッセージへの返信3案</h3>
+<p class="when"><span class="when-label">こんな時に</span>返す言葉の温度が決まらず、既読のまま何時間も置いてしまう</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私の代わりに返信の下書きをする担当者です。
+知り合いやお客様から届いた個人あてのメッセージに、丁寧め・普通・短めの3種類で返信案を作ってください。
+
+3案の違い：
+・丁寧め：初めての方や目上の方に。お礼と気づかいを厚めに
+・普通：何度かやりとりのある方に。用件と気持ちのつり合い重視
+・短め：気心の知れた方に。3行以内で用件が伝わる形
+
+守ってほしいこと：
+・下に貼る見本に、私の言葉づかいを寄せてください
+・相手が質問している点には、3案とも必ず答えてください
+・答えられない質問はごまかさず「確認して改めてご連絡します」と書いてください
+・私が約束していない日程・金額・条件を書き足さないでください
+
+出力：
+3案を並べたあと、「今回はこれがおすすめ」と1つ選び、理由を一言添えてください。
+
+【届いたメッセージと、私の言葉づかいの見本を貼る】</pre></div></details>
+</article>
+<h2 class="sec" data-cat="ナレッジ・AIを育てる"><span>ナレッジ・AIを育てる</span><em>6本</em></h2>
+<article class="card" data-cat="ナレッジ・AIを育てる" data-no="119">
+<div class="card-head"><span class="num">119</span><div><h3>ルール集を毎回ひと回り育てる<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>同じ直しを何度も伝えているのに、また同じ原稿が返ってくる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、すでにあるルール集を現役に保つ担当者です。
+今回私が出した修正の指示を、すでにあるルール集と突き合わせて、足す・書き換える・何もしない、のどれかに判定してください。
+
+進め方：
+1. 今回の指示を1件ずつに分け、それぞれ、すでにあるルールのどれに当たるかを探してください
+2. 同じ中身のルールがあれば「何もしない」、言い方が古いだけなら「書き換える」と判定してください
+3. どのルールにも当てはまらないものだけを「足す」に回してください
+4. 前のルールと食い違うものは今回の指示を採用し、外したほうは「変更の記録」に残してください
+
+完成条件：
+・ルール集の行数が、更新のたびに増え続けないこと。足すときは、どれと統合できるかを必ず先に探すこと
+・「何もしない」と判定したものにも、その理由を1行残すこと
+
+更新前のルール集は消さずに残してください。
+作業を始める前に、確認したいことがあれば全部質問してください。
+
+【今あるルール集の場所と、今回の修正指示を書く】</pre></div></details>
+</article>
+<article class="card" data-cat="ナレッジ・AIを育てる" data-no="120">
+<div class="card-head"><span class="num">120</span><div><h3>散らばった記録から正本を1本<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>情報があちこちに散らばり、どれが最新かわからない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、決まりごとを設計する担当者です。
+下に示す記録を全部読み、次からは必ずここを見る「正本」を1本作ってください。
+
+読む記録：
+【例：お客様の声、会議のメモ、完成した原稿、過去の修正依頼】
+
+正本に入れること：
+・繰り返し出てくる判断は、共通のルールとして書いてください
+・1回だけでも大事な指摘は、条件つきのルールとして残してください
+・食い違いは、日付・根拠・実際の結果の順に見て決めてください
+・どうしても決められないものは「要確認」に分けて、私に判断を求めてください
+・各ルールに、やってはいけない例・良い例・どの記録から来たかを添えてください
+
+完成条件：
+この1本を読んだだけで、はじめての人でも過去と同じ直しを出さずに済む状態。
+古い版があれば、変わった点と、いつから切り替えるかも書いてください。
+
+記録から言えないことは書かないでください。「材料不足」と書いてください。</pre></div></details>
+</article>
+<article class="card" data-cat="ナレッジ・AIを育てる" data-no="121">
+<div class="card-head"><span class="num">121</span><div><h3>AIの書き癖を禁止事項にする</h3>
+<p class="when"><span class="when-label">こんな時に</span>AIの原稿はいつも8割どまりで、残り2割を毎回直している</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、AIの書き癖を洗い出す専門家です。
+AIが書いた初稿と、私が直した完成稿を貼ります。私が毎回消している「AIがやりがちなこと」だけを一覧にしてください。
+
+分析する観点：
+・出だしの作り方（何行目で本題に入るか、最初の一文の形）
+・話の並べ方（結論から入るか、体験から入るか）
+・言葉づかい（よく足すつなぎの言葉、必ず削る言い回し）
+・私が必ず消している言い回し（そのまま引用してください）
+・AIが足したがる前置きと、まとめの決まり文句
+
+ルールの条件：
+・「なんとなく」で終わらせず、次の人が同じ直しを避けられる言葉にしてください
+・迷いやすい箇所は「こういう時はこう」と条件つきで書いてください
+・直した回数が多い順に並べてください
+
+完成条件：
+この一覧を「禁止事項」として先に渡せば、同じ直しが二度と発生しない状態。
+
+【AIの初稿と、私の完成稿を3組以上貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="ナレッジ・AIを育てる" data-no="122">
+<div class="card-head"><span class="num">122</span><div><h3>終わるたびに手順書を育てる<span class="tag">ファイル操作AI向け</span></h3>
+<p class="when"><span class="when-label">こんな時に</span>やり方を毎回思い出しながら進めていて、人にも渡せない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、【例：講座の月次フォロー】の実行担当であり、手順書を育てる責任者でもあります。
+今ある手順書のとおりに今回の仕事を終えたあと、手順書の更新案を出してください。
+
+ふりかえる観点：
+・手順書どおりにいかなかった箇所
+・私が途中で直した箇所
+・判断に迷った箇所
+・なくても困らなかった工程
+・足したほうがいい確認項目
+
+更新案の出し方：
+・「今のやり方 → 変える案 → その理由 → ほかに影響が出る場所」の順で、変わる部分だけを示してください
+・思いつきではなく、今回実際に起きたことを根拠にしてください
+・変える必要がなければ「変更なし」と言い切ってください
+
+守ってほしいこと：
+私が承認した変更だけを手順書に反映し、いつ何を変えたかの記録を残してください。
+承認の前に上書きしないでください。次回はまず、更新後の手順書を読んでから始めてください。</pre></div></details>
+</article>
+<article class="card" data-cat="ナレッジ・AIを育てる" data-no="123">
+<div class="card-head"><span class="num">123</span><div><h3>自分専用のプロンプト集を作らせる</h3>
+<p class="when"><span class="when-label">こんな時に</span>集めたプロンプトが、自分の仕事にはうまく合わない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、私専用の指示文をまとめる担当者です。
+私の仕事に合わせた「自分用プロンプト集」を作ってください。
+
+私の情報：
+・仕事や発信の内容：【例：個人向けのAI活用講座】
+・よくやる作業：【例：投稿づくり、面談の記録、受講生への返信】
+
+進め方：
+1. まず、私が1週間でやっている作業を聞き取ってください。質問は1回に1つ、聞く順番は任せます
+2. 材料が揃ったと思ったら、私への確認なしで最後まで書き上げてください
+
+プロンプト集の条件：
+・1本ずつ「こんな時に使う」を先頭につけてください
+・【 】を書き換えるだけで使える形にしてください
+・本文は、やり方を細かく指示するのではなく、ゴールと出来上がりの条件を渡す形にしてください
+・使う回数が多そうな順に並べ、最後に目次をつけてください
+
+それでは、1問目をお願いします。</pre></div></details>
+</article>
+<article class="card" data-cat="ナレッジ・AIを育てる" data-no="124">
+<div class="card-head"><span class="num">124</span><div><h3>自分の考え方を人格の記録に残す</h3>
+<p class="when"><span class="when-label">こんな時に</span>どのAIに頼んでも、自分の考えとは違う答えが返ってくる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、人の考え方を引き出す聞き手です。
+私に取材して、どのAIに貼っても私らしく書けるようになる「人格の記録」を作ってください。
+
+私の仕事：【例：個人向けのAI活用講座と、SNSでの発信】
+
+進め方：
+・質問は1回につき1つ、合計15問を目安にしてください
+・何を聞くかの設計は任せます。答えを掘り下げる質問も混ぜてください
+・私が言葉に詰まったら、選択肢を出して選ばせてください
+・15問終わったら、確認なしで最後まで書き上げてください
+
+記録に入れること：
+・大事にしている考えと、その元になった出来事
+・迷ったときの判断の基準（何を優先し、何を捨てるか）
+・好きなもの、どうしても許せないこと
+・読者やお客様との、ちょうどいい距離の取り方
+・使わない言葉、言われたくない褒められ方
+
+守ってほしいこと：
+私が話していない経歴や実績を作らないでください。
+お世辞は不要です。話の中に食い違いがあれば、その場で指摘してください。
+
+それでは、1問目をお願いします。</pre></div></details>
+</article>
+<h2 class="sec" data-cat="画像・デザイン・動画"><span>画像・デザイン・動画</span><em>9本</em></h2>
+<article class="card" data-cat="画像・デザイン・動画" data-no="28">
+<div class="card-head"><span class="num">028</span><div><h3>投稿画像の生成指示文を作る</h3>
+<p class="when"><span class="when-label">こんな時に</span>画像生成AIへの指示（プロンプト）がうまく書けない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、画像生成AIへの指示文を作る専門家です。
+次の用途の画像を作るための指示文（日本語＋英語の2種類）を書いてください。
+
+用途：【例：Instagram投稿の表紙／セミナー告知バナー】
+サイズ：【例：正方形／16:9】
+入れたい文字：【例：「AIで仕事を時短」※文字なしなら「なし」】
+雰囲気：【例：明るい／信頼感／かわいい系】
+色の希望：【例：白ベースにブルー】
+
+守ってほしいこと：
+・文字を入れる場合は1〜2フレーズに絞ること（長文は崩れやすいため）
+・「余計な文字・ロゴを入れない」という指定を指示文に含めること
+・あとで使い回せるように、変更しそうな箇所を【　】にした汎用版も添えること</pre></div></details>
+</article>
+<article class="card" data-cat="画像・デザイン・動画" data-no="29">
+<div class="card-head"><span class="num">029</span><div><h3>デザインの改善レビュー</h3>
+<p class="when"><span class="when-label">こんな時に</span>作った画像・スライドが「なんかダサい」けど理由が分からない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、デザインレビューの担当です。
+添付した画像（スライド／バナー／投稿画像）を、目的に照らして診断してください。
+
+この画像の目的：【例：セミナーに申し込んでもらう】
+見る人：【例：AI初心者の30〜40代】
+
+診断の観点：
+・パッと見た3秒で、一番伝えたいことが伝わるか
+・文字の量・大きさ・読みやすさ
+・視線がどこに動くか、迷子にならないか
+・目的への次の行動（申込・保存など）が明確か
+
+出力：
+・良い点（残すべきところ）
+・改善点を効果が大きい順に3つ、具体的な直し方つきで
+
+【画像を添付】</pre></div></details>
+</article>
+<article class="card" data-cat="画像・デザイン・動画" data-no="30">
+<div class="card-head"><span class="num">030</span><div><h3>スライド構成の設計図</h3>
+<p class="when"><span class="when-label">こんな時に</span>資料作りで「何をどの順で見せるか」から悩む</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、プレゼン資料の構成を設計する専門家です。
+次の内容で、スライドの設計図を作ってください。
+
+テーマ：【例：AI活用セミナー 60分】
+聞く人：【例：AIをまだ使ったことがない個人事業主】
+ゴール：【例：聞いた人が今日AIを1回触ってみる】
+
+出力：
+・スライド構成（1枚ごとに「見出し／載せる内容／このスライドの役割」）
+・1枚に情報を詰め込みすぎている箇所があれば分割の提案
+・冒頭3枚は特に丁寧に（つかみが勝負のため、2パターン提案）
+
+守ってほしいこと：
+・1スライド1メッセージを守ること
+・専門用語を使う場合は「最初に出た時に一言説明」を入れる構成にすること</pre></div></details>
+</article>
+<article class="card" data-cat="画像・デザイン・動画" data-no="125">
+<div class="card-head"><span class="num">125</span><div><h3>背景画像づくりの穴埋め型</h3>
+<p class="when"><span class="when-label">こんな時に</span>画像生成に頼むと、毎回思っていたのと違うものが出る</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>広告や表紙に使う背景画像を作ります。下の【 】を埋めて、そのまま画像生成AIに渡してください。
+
+用途：【例：講座の申込ページの見出し背景】
+縦横の比率：【例：横長 16対9】
+入れる文字：なし。文字はあとから自分で載せます
+
+作ってほしい絵：
+・全体の雰囲気：やわらかく明るい、上品な印象
+・色：淡い桃色と白、差し色に薄い金
+・形と動き：なめらかな曲線が重なり、粒のような光が浮かぶ
+・光の当て方：左上からのやわらかい光
+・余白：中央は模様を薄くして、文字を載せられるように空ける
+
+仕上げの条件：
+・上に文字を載せても読める明るさと落ち着きを保つこと
+・指定していない文字・名前・印を入れないこと
+・粗い画質、崩れた文字、余計な飾りを避けること
+・人物は入れないこと
+
+まずこの内容で1枚作り、そのあと色だけを変えた案を2枚出してください。</pre></div></details>
+</article>
+<article class="card" data-cat="画像・デザイン・動画" data-no="126">
+<div class="card-head"><span class="num">126</span><div><h3>文字が主役の広告画像を作る</h3>
+<p class="when"><span class="when-label">こんな時に</span>文字入りの画像を頼むと、文字が崩れて使えない</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>文字を主役にした広告用の画像を1枚作ってください。
+
+入れる文字：【例：もう、書けないとは言わせない】
+この1つの言葉だけを入れてください。他の文字や飾り文字は一切入れないでください。
+
+文字の見せ方：
+・書体の雰囲気：細い明朝、少し斜め
+・色：白。背景は濃い紺
+・大小のめりはり：いちばん伝えたい部分を大きく、残りは小さく
+・並び：左揃え。左側と下側に広めの余白を取る
+・質感：文字のふちにやわらかい光
+
+背景：
+・文字が主役なので、無地か、ごく薄い模様までにしてください
+・写真のような細かい絵は入れないでください
+
+仕上げの条件：
+・遠くから見ても一目で読めることを最優先にしてください
+・文字の形が崩れていないか自分で確かめ、崩れていれば作り直してください
+・会社名や商標に見えるものを勝手に足さないでください</pre></div></details>
+</article>
+<article class="card" data-cat="画像・デザイン・動画" data-no="127">
+<div class="card-head"><span class="num">127</span><div><h3>1枚の図解にする設計図づくり</h3>
+<p class="when"><span class="when-label">こんな時に</span>説明が長くなって、文字ばかりの投稿になってしまう</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、情報を図に整理する設計者です。
+下のテーマを1枚の図解にするための設計図を作ってください。絵は描かず、設計図だけで結構です。
+
+テーマ：【例：AIに仕事を任せるまでの4段階】
+
+設計図に入れること：
+・図の題名（14文字以内）と、いちばん言いたいこと（1文）
+・入れる要素と、外す要素（外した理由も一言）
+・どこに何を置くか（上下左右の位置で説明してください）
+・目線がどの順に動くか、1から順に番号をつけて
+・文字の量の目安（1つの枠につき何文字まで）
+・色の使い分け（強調するのは1か所だけ）
+
+完成条件：
+受け取った人が、この設計図を読むだけで迷わず作れる状態。
+そのまま画像生成AIや作り手に渡せる言葉で書いてください。
+
+要素が多くて1枚に収まらないときは、無理に詰めず「2枚に分ける案」を添えてください。</pre></div></details>
+</article>
+<article class="card" data-cat="画像・デザイン・動画" data-no="128">
+<div class="card-head"><span class="num">128</span><div><h3>手書きメモの写真から投稿の下書き</h3>
+<p class="when"><span class="when-label">こんな時に</span>ノートに書いた気づきが、そのまま眠っている</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、手書きの記録を発信に変える担当者です。
+下に貼る写真の中身を文字に起こしてから、投稿の下書きを3本作ってください。
+
+進め方：
+1. 写真に書かれている内容を、書かれた順にすべて文字にしてください
+2. 意味のかたまりごとに並べ直して整理してください
+3. そこから投稿の下書きを3本作ってください
+
+3本の切り口：
+・気づきをそのまま伝える形
+・失敗や遠回りから話す形
+・手順として渡す形
+
+守ってほしいこと：
+読み取れない字は推測せず「判読不能」と書いてください。
+矢印や囲みの意味がはっきりしない箇所も、勝手に解釈せず印をつけてください。
+写真にない話を足さないでください。
+
+【手書きメモまたはホワイトボードの写真を貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="画像・デザイン・動画" data-no="129">
+<div class="card-head"><span class="num">129</span><div><h3>勝ち型を型カードにまとめる</h3>
+<p class="when"><span class="when-label">こんな時に</span>短い動画の台本づくりが、毎回ゼロからで時間がかかる</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、短い動画の台本を書く構成作家です。
+過去に反応が良かった台本を貼ります。そこから、使い回せる「型カード」を1枚作ってください。
+
+新しいテーマ：【例：AIに任せて時間が増えた話】
+
+進め方：
+1. 貼った台本から、共通する組み立て方を取り出してください（最初の一言、話の順番、締め方、長さ）
+2. その型を短くまとめて、先に私に見せてください
+3. その型に沿った見本を1本だけ書き、型カードのどこがどう反映されているかを行ごとに示してください
+
+台本の条件：
+・長さは【例：45秒】。読み上げたときの秒数の目安を、場面ごとに添えてください
+・冒頭の一言は、貼った台本で実際に効いていた作り方をそのまま型として書き出してください
+・画面に出す文字と、口で話す言葉を分けて書いてください
+・締めは、次に何をすればいいかが一言でわかる形にしてください
+
+元の台本の言い回しをそのまま流用しないでください。借りるのは型だけです。
+
+【過去に反応が良かった台本を3本以上貼る】</pre></div></details>
+</article>
+<article class="card" data-cat="画像・デザイン・動画" data-no="130">
+<div class="card-head"><span class="num">130</span><div><h3>長い動画から切り抜きどころを選ぶ</h3>
+<p class="when"><span class="when-label">こんな時に</span>撮った長い動画が、見返す時間がなくて使われないまま</p></div></div>
+<details><summary>プロンプトを見る</summary>
+<div class="prompt-wrap"><button class="copy" type="button">コピー</button>
+<pre>あなたは、長い動画から見どころを探す編集担当です。
+下に貼る文字起こしから切り抜きに使える場面を選び、添える投稿の文面までセットで出してください。
+
+選ぶ条件：
+・候補は7つ。それぞれ20秒から60秒に収まる長さにしてください
+・言い切っている場面、意外な話、聞き手が強く反応した場面を優先してください
+・前後の説明がなくても意味が通る場面を選んでください
+
+1つの候補に添えること：
+・始まりと終わりの時間（何分何秒から何分何秒まで）
+・その場面のひとこと見出し
+・切り抜く理由（なぜ届きそうか）
+・画面に出す文字（12文字以内）
+・そのまま出せる投稿の文面
+
+守ってほしいこと：
+話していない言葉を、投稿の文面に入れないでください。
+時間の数字は文字起こしのとおりに書き、あいまいな箇所には「要確認」と添えてください。
+
+【時間つきの文字起こしを貼る】</pre></div></details>
+</article>
+<p class="empty" id="empty">見つかりませんでした。別の言葉で探すか、分野タブから選んでみてください。</p>
+</main>
+<button class="totop" id="totop" type="button" aria-label="上に戻る">↑</button>
+<footer class="footer">
+<div>ムダな作業10倍効率化できる AIプロンプト大全130選</div>
+<div class="note">受講生限定の配布物です。転載・再配布はご遠慮ください。</div>
+</footer>
+<script>
+(function(){
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var secs  = Array.prototype.slice.call(document.querySelectorAll('.sec'));
+  var tabs  = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var q = document.getElementById('q'), clear = document.getElementById('clear');
+  var hits = document.getElementById('hits'), empty = document.getElementById('empty');
+  var cat = 'all';
+
+  cards.forEach(function(c){
+    c._text = (c.querySelector('h3').textContent + ' ' +
+               c.querySelector('.when').textContent + ' ' +
+               c.querySelector('pre').textContent).toLowerCase();
+  });
+
+  function apply(){
+    var kw = q.value.trim().toLowerCase();
+    var n = 0;
+    cards.forEach(function(c){
+      var ok = (cat === 'all' || c.dataset.cat === cat) &&
+               (!kw || c._text.indexOf(kw) !== -1);
+      c.style.display = ok ? '' : 'none';
+      if (ok) n++;
+    });
+    secs.forEach(function(s){
+      var show = !kw && (cat === 'all' || s.dataset.cat === cat);
+      s.style.display = show ? '' : 'none';
+    });
+    hits.textContent = (kw || cat !== 'all') ? '該当 ' + n + ' 本' : '';
+    empty.style.display = n ? 'none' : 'block';
+    clear.style.display = q.value ? 'block' : 'none';
+  }
+
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      tabs.forEach(function(x){ x.classList.remove('active'); });
+      t.classList.add('active');
+      cat = t.dataset.cat;
+      apply();
+      var top = document.querySelector('.tabs').getBoundingClientRect().top + window.scrollY - 1;
+      if (window.scrollY > top) window.scrollTo(0, top);
+    });
+  });
+
+  q.addEventListener('input', apply);
+  clear.addEventListener('click', function(){ q.value = ''; q.focus(); apply(); });
+
+  document.addEventListener('click', function(ev){
+    var b = ev.target.closest && ev.target.closest('.copy');
+    if (!b) return;
+    var text = b.parentNode.querySelector('pre').textContent;
+    var done = function(){
+      b.textContent = 'コピーしました';
+      b.classList.add('done');
+      setTimeout(function(){ b.textContent = 'コピー'; b.classList.remove('done'); }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ fallback(text, done); });
+    } else { fallback(text, done); }
+  });
+  function fallback(text, done){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+
+  var totop = document.getElementById('totop');
+  window.addEventListener('scroll', function(){
+    totop.style.display = window.scrollY > 700 ? 'grid' : 'none';
+  });
+  totop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+})();
+</script>
+</body></html>
