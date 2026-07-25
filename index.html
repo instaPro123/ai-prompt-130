@@ -66,38 +66,57 @@ h1 .l3 .n { font-size:1.1em; }
   font-size:13px; line-height:1.85; color:var(--dim); }
 .howto .fine b { color:var(--sub); font-weight:700; }
 
-/* ---- search ---- */
-.searchbar { max-width:900px; margin:24px auto 0; padding:0 20px; }
-.searchbar .wrap { position:relative; }
-.searchbar input { width:100%; font-size:15px; padding:15px 48px 15px 46px;
-  border:1px solid var(--line); border-radius:14px; background:rgba(15,21,48,.85);
-  color:var(--text); font-family:inherit; outline:none; transition:border-color .18s, box-shadow .18s; }
-.searchbar input::placeholder { color:var(--dim); }
-.searchbar input:focus { border-color:rgba(63,224,255,.55);
-  box-shadow:0 0 0 4px rgba(63,224,255,.09), 0 0 24px rgba(63,224,255,.12); }
-.searchbar .ico { position:absolute; left:17px; top:50%; transform:translateY(-50%);
-  color:var(--dim); font-size:15px; pointer-events:none; }
-.searchbar .clear { position:absolute; right:9px; top:50%; transform:translateY(-50%);
+/* ---- 固定バー（検索＋分野） ---- */
+.bar { position:sticky; top:0; z-index:30; margin-top:22px;
+  background:rgba(7,10,22,.93); backdrop-filter:blur(14px);
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.bar-inner { max-width:900px; margin:0 auto; padding:11px 20px;
+  display:flex; gap:10px; align-items:center; }
+.search { position:relative; flex:1 1 auto; min-width:0; }
+.search input { width:100%; font-size:15px; padding:12px 42px 12px 42px;
+  border:1px solid var(--line); border-radius:12px; background:rgba(15,21,48,.9);
+  color:var(--text); font-family:inherit; outline:none;
+  transition:border-color .18s, box-shadow .18s; }
+.search input::placeholder { color:var(--dim); }
+.search input:focus { border-color:rgba(63,224,255,.55);
+  box-shadow:0 0 0 4px rgba(63,224,255,.09); }
+.search .ico { position:absolute; left:15px; top:50%; transform:translateY(-50%);
+  color:var(--dim); font-size:14px; pointer-events:none; }
+.search .clear { position:absolute; right:7px; top:50%; transform:translateY(-50%);
   border:none; background:transparent; color:var(--dim); font-size:19px; cursor:pointer;
-  padding:6px 11px; display:none; }
-.searchbar .clear:hover { color:var(--text); }
+  padding:5px 10px; display:none; }
+.search .clear:hover { color:var(--text); }
 
-/* ---- tabs ---- */
-.tabs { position:sticky; top:0; z-index:10; background:rgba(7,10,22,.86);
-  backdrop-filter:blur(12px); border-bottom:1px solid var(--line);
-  display:flex; gap:8px; overflow-x:auto; padding:14px 20px; margin-top:20px;
-  -webkit-overflow-scrolling:touch; scrollbar-width:none; }
-.tabs::-webkit-scrollbar { height:0; }
-.tab { flex-shrink:0; background:rgba(19,26,58,.7); color:var(--sub);
-  border:1px solid var(--line); border-radius:10px; padding:8px 14px; font-size:13px;
-  cursor:pointer; font-family:inherit; display:flex; align-items:center; gap:7px;
-  transition:color .16s, border-color .16s, background .16s; white-space:nowrap; }
-.tab:hover { color:var(--text); border-color:#33407a; }
-.tab .c { font-size:11px; color:var(--dim); }
-.tab.active { background:linear-gradient(135deg,rgba(63,224,255,.16),rgba(169,123,255,.16));
-  color:var(--text); border-color:rgba(63,224,255,.5); font-weight:700;
-  box-shadow:0 0 18px rgba(63,224,255,.16); }
-.tab.active .c { color:var(--cyan); }
+.catsel { flex:0 0 auto; display:flex; align-items:center; gap:8px; cursor:pointer;
+  font-family:inherit; font-size:13.5px; font-weight:700; color:var(--text);
+  padding:12px 15px; border-radius:12px; max-width:52%;
+  background:linear-gradient(135deg,rgba(63,224,255,.13),rgba(169,123,255,.13));
+  border:1px solid rgba(63,224,255,.4); transition:box-shadow .16s, border-color .16s; }
+.catsel:hover { box-shadow:0 0 18px rgba(63,224,255,.16); }
+.catsel .lbl { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.catsel .cnt { flex-shrink:0; font-size:11px; font-weight:700; color:var(--cyan);
+  background:rgba(63,224,255,.12); border-radius:999px; padding:1px 8px; }
+.catsel .car { flex-shrink:0; font-size:10px; color:var(--cyan);
+  transition:transform .2s; }
+.catsel[aria-expanded="true"] .car { transform:rotate(180deg); }
+
+.panel { display:none; border-top:1px solid var(--line);
+  background:rgba(9,13,28,.98); }
+.panel.open { display:block; }
+.panel-inner { max-width:900px; margin:0 auto; padding:14px 20px 18px;
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(196px,1fr)); gap:8px;
+  max-height:min(60vh,430px); overflow-y:auto; }
+.catbtn { display:flex; align-items:center; justify-content:space-between; gap:10px;
+  text-align:left; font-family:inherit; font-size:13px; cursor:pointer;
+  color:var(--sub); background:rgba(19,26,58,.65); border:1px solid var(--line);
+  border-radius:10px; padding:11px 13px; line-height:1.45;
+  transition:color .16s, border-color .16s, background .16s; }
+.catbtn:hover { color:var(--text); border-color:#39457f; background:rgba(25,33,70,.8); }
+.catbtn em { flex-shrink:0; font-style:normal; font-size:11px; color:var(--dim); }
+.catbtn.active { color:var(--text); font-weight:700;
+  background:linear-gradient(135deg,rgba(63,224,255,.15),rgba(169,123,255,.15));
+  border-color:rgba(63,224,255,.5); }
+.catbtn.active em { color:var(--cyan); }
 
 .hits { max-width:900px; margin:18px auto -4px; padding:0 20px; font-size:12.5px;
   color:var(--dim); letter-spacing:.04em; }
@@ -177,6 +196,12 @@ pre { background:#060913; border:1px solid var(--line); border-radius:12px;
 .footer .ttl { color:var(--sub); font-weight:700; }
 .footer .note { margin-top:9px; }
 
+@media (max-width:560px) {
+  .bar-inner { flex-wrap:wrap; gap:8px; padding:10px 16px; }
+  .search { flex:1 1 100%; }
+  .catsel { flex:1 1 100%; max-width:none; justify-content:space-between; padding:11px 14px; }
+  .panel-inner { grid-template-columns:1fr; padding:12px 16px 16px; }
+}
 @media (max-width:600px) {
   .hero { padding:48px 18px 30px; }
   .card { padding:17px 15px; border-radius:14px; }
@@ -215,13 +240,19 @@ pre { background:#060913; border:1px solid var(--line); border-radius:12px;
 </p>
 </div></section>
 
-<section class="searchbar"><div class="wrap">
+<div class="bar">
+<div class="bar-inner">
+<div class="search">
 <span class="ico">🔍</span>
-<input type="search" id="q" placeholder="やりたいことで検索（例：議事録、サムネ、値段、断り方）" autocomplete="off">
+<input type="search" id="q" placeholder="やりたいことで検索（例：議事録、サムネ）" autocomplete="off">
 <button class="clear" id="clear" type="button" aria-label="消す">×</button>
-</div></section>
-
-<nav class="tabs"><button class="tab active" data-cat="all">すべて<span class="c">130</span></button><button class="tab" data-cat="SNS発信・投稿">SNS発信・投稿<span class="c">19</span></button><button class="tab" data-cat="コンテンツ・商品づくり">コンテンツ・商品づくり<span class="c">16</span></button><button class="tab" data-cat="集客・販売・セールス">集客・販売・セールス<span class="c">10</span></button><button class="tab" data-cat="リサーチ・分析">リサーチ・分析<span class="c">15</span></button><button class="tab" data-cat="意思決定・戦略">意思決定・戦略<span class="c">10</span></button><button class="tab" data-cat="検品・品質チェック">検品・品質チェック<span class="c">10</span></button><button class="tab" data-cat="仕組み化・自動化">仕組み化・自動化<span class="c">17</span></button><button class="tab" data-cat="数字・経理・事務">数字・経理・事務<span class="c">8</span></button><button class="tab" data-cat="顧客対応・コミュニケーション">顧客対応・コミュニケーション<span class="c">10</span></button><button class="tab" data-cat="ナレッジ・AIを育てる">ナレッジ・AIを育てる<span class="c">6</span></button><button class="tab" data-cat="画像・デザイン・動画">画像・デザイン・動画<span class="c">9</span></button></nav>
+</div>
+<button class="catsel" id="catsel" type="button" aria-expanded="false">
+<span class="lbl" id="catlbl">すべての分野</span><span class="cnt" id="catcnt">130</span><span class="car">▾</span>
+</button>
+</div>
+<div class="panel" id="panel"><div class="panel-inner"><button class="catbtn active" data-cat="all" data-label="すべての分野"><span>すべての分野</span><em>130</em></button><button class="catbtn" data-cat="SNS発信・投稿" data-label="SNS発信・投稿"><span>SNS発信・投稿</span><em>19</em></button><button class="catbtn" data-cat="コンテンツ・商品づくり" data-label="コンテンツ・商品づくり"><span>コンテンツ・商品づくり</span><em>16</em></button><button class="catbtn" data-cat="集客・販売・セールス" data-label="集客・販売・セールス"><span>集客・販売・セールス</span><em>10</em></button><button class="catbtn" data-cat="リサーチ・分析" data-label="リサーチ・分析"><span>リサーチ・分析</span><em>15</em></button><button class="catbtn" data-cat="意思決定・戦略" data-label="意思決定・戦略"><span>意思決定・戦略</span><em>10</em></button><button class="catbtn" data-cat="検品・品質チェック" data-label="検品・品質チェック"><span>検品・品質チェック</span><em>10</em></button><button class="catbtn" data-cat="仕組み化・自動化" data-label="仕組み化・自動化"><span>仕組み化・自動化</span><em>17</em></button><button class="catbtn" data-cat="数字・経理・事務" data-label="数字・経理・事務"><span>数字・経理・事務</span><em>8</em></button><button class="catbtn" data-cat="顧客対応・コミュニケーション" data-label="顧客対応・コミュニケーション"><span>顧客対応・コミュニケーション</span><em>10</em></button><button class="catbtn" data-cat="ナレッジ・AIを育てる" data-label="ナレッジ・AIを育てる"><span>ナレッジ・AIを育てる</span><em>6</em></button><button class="catbtn" data-cat="画像・デザイン・動画" data-label="画像・デザイン・動画"><span>画像・デザイン・動画</span><em>9</em></button></div></div>
+</div>
 <p class="hits" id="hits"></p>
 <main class="grid" id="grid">
 <h2 class="sec" data-cat="SNS発信・投稿"><span class="bar"></span><span>SNS発信・投稿</span><em>19本</em><span class="rule"></span></h2>
@@ -3523,10 +3554,27 @@ AIが書いた初稿と、私が直した完成稿を貼ります。私が毎回
 (function(){
   var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
   var secs  = Array.prototype.slice.call(document.querySelectorAll('.sec'));
-  var tabs  = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var tabs  = Array.prototype.slice.call(document.querySelectorAll('.catbtn'));
   var q = document.getElementById('q'), clear = document.getElementById('clear');
   var hits = document.getElementById('hits'), empty = document.getElementById('empty');
+  var catsel = document.getElementById('catsel'), panel = document.getElementById('panel');
+  var catlbl = document.getElementById('catlbl'), catcnt = document.getElementById('catcnt');
   var cat = 'all';
+
+  function openPanel(on){
+    panel.classList.toggle('open', on);
+    catsel.setAttribute('aria-expanded', on ? 'true' : 'false');
+  }
+  catsel.addEventListener('click', function(ev){
+    ev.stopPropagation();
+    openPanel(!panel.classList.contains('open'));
+  });
+  document.addEventListener('click', function(ev){
+    if (panel.classList.contains('open') && !panel.contains(ev.target)) openPanel(false);
+  });
+  document.addEventListener('keydown', function(ev){
+    if (ev.key === 'Escape') openPanel(false);
+  });
 
   cards.forEach(function(c){
     var tip = c.querySelector('.tip');
@@ -3559,8 +3607,12 @@ AIが書いた初稿と、私が直した完成稿を貼ります。私が毎回
       tabs.forEach(function(x){ x.classList.remove('active'); });
       t.classList.add('active');
       cat = t.dataset.cat;
+      catlbl.textContent = t.dataset.label;
+      catcnt.textContent = t.querySelector('em').textContent;
+      openPanel(false);
       apply();
-      var top = document.querySelector('.tabs').getBoundingClientRect().top + window.scrollY - 1;
+      var bar = document.querySelector('.bar');
+      var top = bar.getBoundingClientRect().top + window.scrollY - 1;
       if (window.scrollY > top) window.scrollTo(0, top);
     });
   });
